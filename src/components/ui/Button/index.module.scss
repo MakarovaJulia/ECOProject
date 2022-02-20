@@ -1,0 +1,17 @@
+.btn{
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 11, 38, 0.56);
+  width: 179px;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+&Green{
+  @extend .btn;
+  background: #07C88E;
+}
+&Gray{
+  @extend .btn;
+  background: rgba(62, 80, 114, 0.08);
+}
+}

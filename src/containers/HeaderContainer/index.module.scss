@@ -1,0 +1,47 @@
+.container{
+  max-width: 100%;
+  left: 0;
+  box-shadow: 0px 0.5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.header_wrapper{
+  height: 80px;
+  margin-right: 10vh;
+  margin-left: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.logo{
+  width: 94px;
+  margin-right: 24px;
+}
+
+.header_link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #000B26;
+  opacity: 64%;
+  text-decoration: none;
+  margin-right: 24px;
+}
+
+.header_link_active{
+  @extend .header_link;
+  opacity: 100%;
+  border-bottom: 3px solid #07C88E;
+}
+
+.header_right{
+  margin-right: 24px;
+}
+
+
+.header_icon{
+  margin-right: 10px;
+}
