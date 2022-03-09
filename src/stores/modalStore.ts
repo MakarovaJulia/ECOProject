@@ -11,10 +11,11 @@ export class ModalStore{
     }
 
     clearCurrentModal = () => {
-
+        this.currentModal = null;
     }
 
-    setCurrentModal = () =>{
 
+    setCurrentModal = (modal: any) =>{
+        this.currentModal = modal;
     }
 }

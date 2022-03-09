@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserHistory } from 'history'
 import {Router} from "react-router";
 import {BrowserRouter} from "react-router-dom";
+import {ModalConstructor} from "./components/Modal/ModalConstuctor";
 
 const history = createBrowserHistory();
 
@@ -12,6 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
           <App />
+          <ModalConstructor/>
       </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

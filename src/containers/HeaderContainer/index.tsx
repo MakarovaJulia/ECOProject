@@ -4,9 +4,19 @@ import logo from "../../asserts/logo.svg";
 import {NavLink} from "react-router-dom";
 import place from "../../asserts/place.svg";
 import enter from "../../asserts/enter.svg";
+import {observer} from "mobx-react";
+import {useStores} from "../../components/utils/use-stores-hook";
+import {AuthModal} from "../../components/Modal/AuthModal";
 
-export const HeaderContainer = (props: any) =>{
+export const HeaderContainer = observer((props: any) =>{
     const { children } = props;
+    const {modalStore: {setCurrentModal}} = useStores();
+
+    const openModal = () => {
+        setCurrentModal(AuthModal)
+    }
+
+
     return (
         <>
             <div className={styles.container}>
@@ -35,13 +45,13 @@ export const HeaderContainer = (props: any) =>{
                             <img className={styles.header_icon} src={place} alt="place"/>
                             Город
                         </div>
-                        <div className={styles.header_right}>
+                        <button className={styles.header_right} onClick={openModal}>
                             <img className={styles.header_icon} src={enter} alt="enter"/>
                             Войти
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
         </>
     )
-}
+})

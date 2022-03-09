@@ -1,4 +1,5 @@
 import React, {FC, ReactNode} from 'react';
+import styles from './index.module.scss'
 
 interface Props {
     title: ReactNode;
@@ -7,7 +8,7 @@ interface Props {
 
 export const Modal: FC<Props> = ({title, onClose, children}) => {
     return (
-        <div>
+        <div className={styles.overlay}>
             <div>
                 {title}
                 <button onClick={onClose}>X</button>
