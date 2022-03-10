@@ -11,12 +11,12 @@ import {useNavigate} from "react-router";
 
 export const HeaderContainer = observer((props: any) =>{
     const { children } = props;
-    const {modalStore: {setCurrentModal}} = useStores();
+    const {modalStore: {setCurrentModal, clearCurrentModal}} = useStores();
     let navigate = useNavigate()
 
     const openModal = () => {
+        clearCurrentModal()
         setCurrentModal(AuthModal)
-        // navigate('/login')
     }
 
 

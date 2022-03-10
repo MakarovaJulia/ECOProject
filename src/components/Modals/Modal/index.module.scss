@@ -19,7 +19,7 @@
   align-items: flex-start;
   padding: 48px;
   width: 480px;
-  height: 532px;
+  height: min-content;
   background: #FFFFFF;
   border-radius: 24px;
 }
@@ -46,13 +46,17 @@
 }
 
 #btn_for_partners{
-  width: 100%!important;
+  width: 100%;
   cursor: pointer;
+  margin-top: 20px;
+  height: 60px;
 }
 
 #modal_btn{
-  width: 100%!important;
+  width: 100%;
   cursor: pointer;
+  margin-top: 20px;
+  height: 60px;
 }
 
 .modal_close_icon{
