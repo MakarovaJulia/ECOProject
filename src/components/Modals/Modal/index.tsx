@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useRef, useEffect, useCallback} from 'react';
+import React, {FC, ReactNode, useRef, useEffect, useCallback, ReactElement, JSXElementConstructor} from 'react';
 import styles from './index.module.scss'
 import {useStores} from "../../utils/use-stores-hook";
 import {Button} from "../../ui/Button";
@@ -10,11 +10,12 @@ interface Props {
     onClose: () => void;
     onClick: () => void;
     btnTitle: string;
-    isBtnForPartners: boolean
+    isBtnForPartners: boolean;
 }
 
 export const Modal: FC<Props> = ({title, onClose, onClick,
-                                     isBtnForPartners, btnTitle, children}) => {
+                                     isBtnForPartners, btnTitle,
+                                     children}) => {
     const {modalStore: {clearCurrentModal}} = useStores()
     const modalRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     let navigate = useNavigate()
