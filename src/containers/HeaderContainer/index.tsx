@@ -1,19 +1,22 @@
 import React from 'react';
 import styles from './index.module.scss'
 import logo from "../../asserts/logo.svg";
-import {NavLink} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 import place from "../../asserts/place.svg";
 import enter from "../../asserts/enter.svg";
 import {observer} from "mobx-react";
 import {useStores} from "../../components/utils/use-stores-hook";
 import {AuthModal} from "../../components/Modals/AuthModal";
+import {useNavigate} from "react-router";
 
 export const HeaderContainer = observer((props: any) =>{
     const { children } = props;
     const {modalStore: {setCurrentModal}} = useStores();
+    let navigate = useNavigate()
 
     const openModal = () => {
         setCurrentModal(AuthModal)
+        // navigate('/login')
     }
 
 
@@ -54,6 +57,7 @@ export const HeaderContainer = observer((props: any) =>{
                     </div>
                 </div>
             </div>
+            <Outlet/>
         </>
     )
 })

@@ -12,7 +12,7 @@ import {LayoutContainer} from "../../containers/LayoutContainer";
 import {Carousel} from "../../components/Carousel";
 import {MainCard} from "../../components/MainCard";
 import {Button} from "../../components/ui/Button";
-import {useNavigate} from "react-router";
+import {Outlet, useNavigate} from "react-router";
 
 
 export const MainPage = observer(() => {
@@ -118,6 +118,7 @@ export const MainPage = observer(() => {
                 </div>
             </LayoutContainer>
             <FooterContainer></FooterContainer>
+            <Outlet/>
         </div>
     )
 });
