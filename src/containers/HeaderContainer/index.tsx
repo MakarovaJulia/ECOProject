@@ -6,7 +6,7 @@ import place from "../../asserts/place.svg";
 import enter from "../../asserts/enter.svg";
 import {observer} from "mobx-react";
 import {useStores} from "../../components/utils/use-stores-hook";
-import {AuthModal} from "../../components/Modal/AuthModal";
+import {AuthModal} from "../../components/Modals/AuthModal";
 
 export const HeaderContainer = observer((props: any) =>{
     const { children } = props;
@@ -45,10 +45,12 @@ export const HeaderContainer = observer((props: any) =>{
                             <img className={styles.header_icon} src={place} alt="place"/>
                             Город
                         </div>
-                        <button className={styles.header_right} onClick={openModal}>
-                            <img className={styles.header_icon} src={enter} alt="enter"/>
-                            Войти
-                        </button>
+                        <div className={styles.header_right}>
+                            <button className={styles.header_modal_btn} onClick={openModal}>
+                                <img className={styles.header_icon} src={enter} alt="enter"/>
+                                Войти
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
