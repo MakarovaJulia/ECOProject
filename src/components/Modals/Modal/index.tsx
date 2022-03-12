@@ -8,13 +8,11 @@ import {useNavigate} from "react-router";
 interface Props {
     title: ReactNode;
     onClose: () => void;
-    onClick: () => void;
-    btnTitle: string;
     isBtnForPartners: boolean;
 }
 
-export const Modal: FC<Props> = ({title, onClose, onClick,
-                                     isBtnForPartners, btnTitle,
+export const Modal: FC<Props> = ({title, onClose,
+                                     isBtnForPartners,
                                      children}) => {
     const {modalStore: {clearCurrentModal}} = useStores()
     const modalRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -41,7 +39,6 @@ export const Modal: FC<Props> = ({title, onClose, onClick,
                 </div>
                 <div className={styles.modal_content}>
                     {children}
-                    <Button color={true} id={styles.modal_btn} onClick={onClick} title={btnTitle} />
                     {isBtnForPartners &&
                     <Button color={false} id={styles.btn_for_partners} onClick={handleBtnForPartners} title='Вход для партнеров'/>}
                 </div>
