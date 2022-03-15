@@ -15,7 +15,7 @@ export const EnterCodeModal = observer(() => {
 
     return (
         <Modal title='Ввести код' onClose={clearCurrentModal} isBtnForPartners={true}>
-            <h5>Ввведите код отправленный вам на телефон</h5>
+            <h5>Введите код, отправленный вам на телефон</h5>
             <CodeVerificationForm />
             <button className={styles.modal_link} onClick={noCode}>Не получил(-а) код</button>
         </Modal>

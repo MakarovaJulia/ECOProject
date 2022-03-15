@@ -8,7 +8,7 @@ import {NavLink} from "react-router-dom";
 const cx = classNames.bind(styles);
 
 export const Button = (props: IButton) => {
-    const { id, title, onClick, image, color, children} = props;
+    const { id, title, onClick, image, color, children, type} = props;
 
     return (
         <button
@@ -17,6 +17,7 @@ export const Button = (props: IButton) => {
                 button: true
             },props.color ? "btnGreen" : "btnGray")}
             id={id}
+            type={type}
         >
             <img src={image}/>
             {title}
