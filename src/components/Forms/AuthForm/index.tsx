@@ -1,63 +1,53 @@
-import {Input} from "../../ui/Input";
 import {useStores} from "../../utils/use-stores-hook";
-import {useState} from "react";
 import {Button} from "../../ui/Button";
+import {useFormik} from "formik";
+import {authValidationSchema} from "../../utils/validationSchemas";
+import styles from '../styles.module.scss';
 
 export const AuthForm = () => {
-    const  {authStore: {
-        login,
-        logout,
-        isError
-    }} = useStores();
 
-    const [loginValue, setLogin] = useState<string>('');
-    const [passwordValue, setPassword] = useState<string>('');
+    const  {authStore: {login}} = useStores();
 
-    function handleSubmit(event: { preventDefault: () => void; }) {
-        alert('The form was submitted!');
-        login({loginValue: loginValue, passwordValue: passwordValue});
-        event.preventDefault();
-    }
-
-    const handleInputChange = (event: { target: {value: string, name: string}; }) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        if (name === 'login') {
-            setLogin(value);
-        }
-        else if (name === 'password') {
-            setPassword(value);
-        }
-
-        if (isError) {
-            logout();
-        }
-    }
+    const formik = useFormik({
+        initialValues: {
+            phone: '',
+            password: ''
+        },
+        validationSchema: authValidationSchema,
+        onSubmit: values => {
+            login({
+                loginValue: values.phone,
+                passwordValue: values.password
+            })
+        },
+    })
 
     return (
-        <form>
-            <Input
-                name='login'
-                value={loginValue}
-                onChange={handleInputChange}
-                error={isError}
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
+            <input
+                className={styles.input}
+                id='phone'
                 type='tel'
                 placeholder='Телефон'
+                {...formik.getFieldProps('phone')}
             />
-            <Input
-                name='password'
+            {formik.touched.phone && formik.errors.phone ? (
+                <div>{formik.errors.phone}</div>
+            ) : null}
+            <input
+                className={styles.input}
+                id='password'
                 type='password'
                 placeholder='Пароль'
-                value={passwordValue}
-                onChange={handleInputChange}
-                error={isError}
+                {...formik.getFieldProps('password')}
             />
+            {formik.touched.password && formik.errors.password ? (
+                <div>{formik.errors.password}</div>
+            ) : null}
             <Button
-                onClick={handleSubmit}
                 color
                 title='Войти'
+                type='submit'
             />
         </form>
     )

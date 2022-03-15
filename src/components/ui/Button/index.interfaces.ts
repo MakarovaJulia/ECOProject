@@ -5,7 +5,7 @@ export interface IButton {
     color: boolean;
     title?: ReactNode;
     onClick?: (e: any) => void;
-    type?: ReactNode;
+    type?: 'submit' | 'reset' | 'button'
     children?: ReactNode;
     image?: string;
 }

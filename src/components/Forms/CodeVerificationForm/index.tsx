@@ -1,34 +1,36 @@
-import {Input} from "../../ui/Input";
-import {useState} from "react";
 import {Button} from "../../ui/Button";
+import styles from "../styles.module.scss";
+import {useFormik} from "formik";
+import {codeValidationSchema} from "../../utils/validationSchemas";
 
 export const CodeVerificationForm = () => {
-    const [code, setCode] = useState<string>('');
 
-    const handleSubmit = () => {
-
-    }
-
-    const handleInputChange = (event: {target: {value: string}; }) => {
-        const value = event.target.value;
-
-        if (value !== code) {
-            setCode(value)
-        }
-    }
+    const formik = useFormik({
+        initialValues: {
+            code: ''
+        },
+        validationSchema: codeValidationSchema,
+        onSubmit: values => {
+            alert('Submit')
+        },
+    })
 
     return (
-        <form>
-            <Input
-                value={code}
-                placeholder='Код'
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
+            <input
+                className={styles.input}
+                id='code'
                 type='text'
-                onChange={handleInputChange}
+                placeholder='Код'
+                {...formik.getFieldProps('code')}
             />
+            {formik.touched.code && formik.errors.code ? (
+                <div>{formik.errors.code}</div>
+            ) : null}
             <Button
                 title='Отправить'
                 color
-                onClick={handleSubmit}
+                type='submit'
             />
         </form>
     )

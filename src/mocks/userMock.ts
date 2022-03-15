@@ -4,6 +4,6 @@ interface IAccountData {
 }
 
 export const accountData: IAccountData = {
-    loginValue: 'login',
+    loginValue: '89051230000',
     password: 'password'
 }

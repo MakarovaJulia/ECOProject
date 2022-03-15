@@ -1,38 +1,38 @@
-import {Input} from "../../ui/Input";
 import {Button} from "../../ui/Button";
-import {useState} from "react";
+import {useFormik} from "formik";
+import {regValidationSchema} from "../../utils/validationSchemas";
+import styles from "../styles.module.scss";
 
 export const RegisterForm = (props: { onClick: () => void }) => {
 
     const {onClick} = props;
 
-    const [phone, setPhone] = useState<string>('')
-
-    const handleInputChange = (event: {target: {value: string}; }) => {
-        const value = event.target.value;
-
-        if (value !== phone) {
-            setPhone(value)
-        }
-    }
-
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
-        onClick();
-        event.preventDefault();
-    }
+    const formik = useFormik({
+        initialValues: {
+            phone: ''
+        },
+        validationSchema: regValidationSchema,
+        onSubmit: values => {
+            onClick();
+        },
+    })
 
     return (
-        <form>
-            <Input
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
+            <input
+                className={styles.input}
+                id='phone'
                 type='tel'
                 placeholder='Телефон'
-                value={phone}
-                onChange={handleInputChange}
+                {...formik.getFieldProps('phone')}
             />
+            {formik.touched.phone && formik.errors.phone ? (
+                <div>{formik.errors.phone}</div>
+            ) : null}
             <Button
                 title='Получить код'
                 color
-                onClick={handleSubmit}
+                type='submit'
             />
         </form>
     )
