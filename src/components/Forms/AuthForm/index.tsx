@@ -2,7 +2,7 @@ import {useStores} from "../../utils/use-stores-hook";
 import {Button} from "../../ui/Button";
 import {useFormik} from "formik";
 import {authValidationSchema} from "../../utils/validationSchemas";
-import styles from './index.module.scss';
+import styles from '../styles.module.scss';
 
 export const AuthForm = () => {
 
@@ -23,7 +23,7 @@ export const AuthForm = () => {
     })
 
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
             <input
                 className={styles.input}
                 id='phone'

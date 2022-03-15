@@ -1,7 +1,7 @@
 import {Button} from "../../ui/Button";
 import {useFormik} from "formik";
 import {regValidationSchema} from "../../utils/validationSchemas";
-import styles from "./index.module.scss";
+import styles from "../styles.module.scss";
 
 export const RegisterForm = (props: { onClick: () => void }) => {
 
@@ -18,7 +18,7 @@ export const RegisterForm = (props: { onClick: () => void }) => {
     })
 
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
             <input
                 className={styles.input}
                 id='phone'

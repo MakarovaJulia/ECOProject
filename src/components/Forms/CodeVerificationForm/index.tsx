@@ -1,5 +1,5 @@
 import {Button} from "../../ui/Button";
-import styles from "./index.module.scss";
+import styles from "../styles.module.scss";
 import {useFormik} from "formik";
 import {codeValidationSchema} from "../../utils/validationSchemas";
 
@@ -16,7 +16,7 @@ export const CodeVerificationForm = () => {
     })
 
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
             <input
                 className={styles.input}
                 id='code'
@@ -24,6 +24,9 @@ export const CodeVerificationForm = () => {
                 placeholder='Код'
                 {...formik.getFieldProps('code')}
             />
+            {formik.touched.code && formik.errors.code ? (
+                <div>{formik.errors.code}</div>
+            ) : null}
             <Button
                 title='Отправить'
                 color

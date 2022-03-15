@@ -19,8 +19,8 @@ export const regValidationSchema = Yup.object({
 });
 
 export const codeValidationSchema = Yup.object({
-    phone: Yup.number()
-        .min(4, 'Длина кода - 4 символа')
-        .max(4, 'Длина кода - 4 символа')
+    code: Yup.number()
+        .typeError('Допустимы только цифры')
+        .test('len', 'Длина кода должна быть 4 символа', val => val?.toString().length === 4)
         .required('Введите код, отправленный на телефон')
 });
