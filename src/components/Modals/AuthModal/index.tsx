@@ -2,7 +2,7 @@ import {Modal} from "../Modal";
 import {observer} from "mobx-react";
 import {useStores} from "../../utils/use-stores-hook";
 import {RegisterModal} from "../RegisterModal";
-import styles from './index.module.scss'
+import styles from '../styles.module.scss'
 import {EnterCodeModal} from "../EnterCodeModal";
 import {AuthForm} from "../../Forms/AuthForm";
 
