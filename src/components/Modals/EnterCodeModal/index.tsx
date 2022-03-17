@@ -6,7 +6,10 @@ import {RegisterModal} from "../RegisterModal";
 import {CodeVerificationForm} from "../../Forms/CodeVerificationForm";
 
 export const EnterCodeModal = observer(() => {
-    const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores()
+    const {
+        modalStore: {clearCurrentModal, setCurrentModal},
+        authStore: {phone}
+    } = useStores()
 
     function noCode(){
         clearCurrentModal()
@@ -14,9 +17,10 @@ export const EnterCodeModal = observer(() => {
     }
 
     return (
-        <Modal title='Ввести код' onClose={clearCurrentModal} isBtnForPartners={true}>
-            <h5>Введите код, отправленный вам на телефон</h5>
-            <CodeVerificationForm />
+        <Modal title='Ввести код' onClose={clearCurrentModal} hasBtnForPartners={true}>
+            <p>Введите код, отправленный вам на телефон</p>
+            <div className={styles.phone}>{phone}</div>
+            <CodeVerificationForm/>
             <button className={styles.modal_link} onClick={noCode}>Не получил(-а) код</button>
         </Modal>
     )

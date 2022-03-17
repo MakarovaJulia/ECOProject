@@ -7,6 +7,11 @@
   padding-left: 15px;
 }
 
+.inputError {
+  border-color: #FF4545;
+  border-width: 2px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -16,4 +21,10 @@
   button {
     width: 100%;
   }
+}
+
+.errorMessage {
+  font-size: 14px;
+  line-height: 20px;
+  color: #FF4545;
 }

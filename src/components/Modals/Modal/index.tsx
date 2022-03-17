@@ -8,11 +8,11 @@ import {AuthPartnersModal} from "../AuthPartnersModal";
 interface Props {
     title: ReactNode;
     onClose: () => void;
-    isBtnForPartners: boolean;
+    hasBtnForPartners: boolean;
 }
 
 export const Modal: FC<Props> = ({title, onClose,
-                                     isBtnForPartners,
+                                     hasBtnForPartners,
                                      children}) => {
     const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores()
     const modalRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -39,7 +39,7 @@ export const Modal: FC<Props> = ({title, onClose,
                 </div>
                 <div className={styles.modal_content}>
                     {children}
-                    {isBtnForPartners &&
+                    {hasBtnForPartners &&
                     <Button color={false} id={styles.btn_for_partners} onClick={handleBtnForPartners} title='Вход для партнеров'/>}
                 </div>
             </div>

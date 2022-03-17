@@ -20,7 +20,7 @@ export const RegisterPartnersModal = observer(() => {
     }
 
     return (
-        <Modal title='Вход или регистрация' onClose={clearCurrentModal} isBtnForPartners={true}>
+        <Modal title='Вход или регистрация' onClose={clearCurrentModal} hasBtnForPartners={true}>
             <RegisterPartnersForm onClick={handleRegister} />
             <button className={styles.modal_link} onClick={openAuthModal}>Я уже зарегистрировался(-ась)</button>
         </Modal>

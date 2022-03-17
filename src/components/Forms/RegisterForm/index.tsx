@@ -2,10 +2,17 @@ import {Button} from "../../ui/Button";
 import {useFormik} from "formik";
 import {regValidationSchema} from "../../utils/validationSchemas";
 import styles from "../styles.module.scss";
+import {observer} from "mobx-react";
+import {useStores} from "../../utils/use-stores-hook";
+import classNames from "classnames/bind";
 
-export const RegisterForm = (props: { onClick: () => void }) => {
+const cx = classNames.bind(styles);
+
+export const RegisterForm = observer((props: { onClick: () => void }) => {
 
     const {onClick} = props;
+
+    const {authStore: {setPhone}} = useStores();
 
     const formik = useFormik({
         initialValues: {
@@ -13,6 +20,7 @@ export const RegisterForm = (props: { onClick: () => void }) => {
         },
         validationSchema: regValidationSchema,
         onSubmit: values => {
+            setPhone(values.phone);
             onClick();
         },
     })
@@ -20,14 +28,17 @@ export const RegisterForm = (props: { onClick: () => void }) => {
     return (
         <form onSubmit={formik.handleSubmit} className={styles.form}>
             <input
-                className={styles.input}
+                className={cx({
+                    input: true,
+                    inputError: formik.touched.phone && formik.errors.phone
+                })}
                 id='phone'
                 type='tel'
                 placeholder='Телефон'
                 {...formik.getFieldProps('phone')}
             />
             {formik.touched.phone && formik.errors.phone ? (
-                <div>{formik.errors.phone}</div>
+                <div className={styles.errorMessage}>{formik.errors.phone}</div>
             ) : null}
             <Button
                 title='Получить код'
@@ -36,4 +47,4 @@ export const RegisterForm = (props: { onClick: () => void }) => {
             />
         </form>
     )
-}
+})

@@ -20,7 +20,7 @@ export const AuthPartnersModal = observer(() => {
     }
 
     return (
-        <Modal title='Вход' onClose={clearCurrentModal} isBtnForPartners={true}>
+        <Modal title='Вход' onClose={clearCurrentModal} hasBtnForPartners={false}>
             <AuthPartnersForm />
             <div className={styles.links_wrapper}>
                 <button className={styles.modal_link} onClick={openRegisterModal}>Войти с помощью смс</button>
