@@ -1,0 +1,43 @@
+.itemCard {
+  width: 16.5vw;
+  min-width: 100px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand {
+  line-height: 18px;
+  background: white;
+  box-shadow: 0 4px 24px rgba(51, 51, 51, 0.12);
+  border-radius: 10px;
+  width: min-content;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  position: absolute;
+  left: 24px;
+  top: 24px;
+
+}
+
+.cardTop {
+  position: relative;
+}
+
+a {
+  display: block;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 16px;
+  color: #000B26E0;
+  cursor: pointer;
+}
+

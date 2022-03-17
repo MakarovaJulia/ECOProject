@@ -3,6 +3,8 @@ import styles from "../MainPage/index.module.scss";
 import {HeaderContainer} from "../../containers/HeaderContainer";
 import logo from "../../asserts/logo.svg";
 import {NavLink} from "react-router-dom";
+import {MarketCard} from "../../components/Market/MarketCard";
+import marketItemPhoto from "../../mocks/marketItemPhoto.jpg"
 
 export const ECOMarketPage = observer(() => {
     return (
@@ -17,6 +19,13 @@ export const ECOMarketPage = observer(() => {
                 <div>Войти</div>
             </HeaderContainer>
             <h1>Эко маркет</h1>
+            <MarketCard
+                brand={'NIKE'}
+                photo={marketItemPhoto}
+                title={'Nike Air Max 2021'}
+                category={'Мужская обувь'}
+                price={'1000'}
+            />
         </div>
     )
 });
