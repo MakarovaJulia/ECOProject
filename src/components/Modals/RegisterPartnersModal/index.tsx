@@ -1,12 +1,12 @@
-import {Modal} from "../Modal";
 import {observer} from "mobx-react";
 import {useStores} from "../../utils/use-stores-hook";
-import styles from "../styles.module.scss";
 import {EnterCodeModal} from "../EnterCodeModal";
-import {AuthModal} from "../AuthModal";
-import {RegisterForm} from "../../Forms/RegisterForm";
+import {Modal} from "../Modal";
+import {AuthPartnersModal} from "../AuthPartnersModal";
+import {RegisterPartnersForm} from "../../Forms/RegisterPartnersFrom";
+import styles from "../styles.module.scss";
 
-export const RegisterModal = observer(() => {
+export const RegisterPartnersModal = observer(() => {
     const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores()
 
     function handleRegister() {
@@ -16,12 +16,12 @@ export const RegisterModal = observer(() => {
 
     function openAuthModal(){
         clearCurrentModal()
-        setCurrentModal(AuthModal)
+        setCurrentModal(AuthPartnersModal)
     }
 
     return (
         <Modal title='Вход или регистрация' onClose={clearCurrentModal} hasBtnForPartners={true}>
-            <RegisterForm onClick={handleRegister} />
+            <RegisterPartnersForm onClick={handleRegister} />
             <button className={styles.modal_link} onClick={openAuthModal}>Я уже зарегистрировался(-ась)</button>
         </Modal>
     )

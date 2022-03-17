@@ -1,25 +1,25 @@
 import {useStores} from "../../utils/use-stores-hook";
 import {Button} from "../../ui/Button";
 import {useFormik} from "formik";
-import {authValidationSchema} from "../../utils/validationSchemas";
+import {authPartnersValidationSchema} from "../../utils/validationSchemas";
 import styles from '../styles.module.scss';
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const AuthForm = () => {
+export const AuthPartnersForm = () => {
 
     const  {authStore: {login}} = useStores();
 
     const formik = useFormik({
         initialValues: {
-            phone: '',
+            email: '',
             password: ''
         },
-        validationSchema: authValidationSchema,
+        validationSchema: authPartnersValidationSchema,
         onSubmit: values => {
             login({
-                loginValue: values.phone,
+                loginValue: values.email,
                 passwordValue: values.password
             })
         },
@@ -30,15 +30,15 @@ export const AuthForm = () => {
             <input
                 className={cx({
                     input: true,
-                    inputError: formik.touched.phone && formik.errors.phone
+                    inputError: formik.touched.email && formik.errors.email
                 })}
-                id='phone'
-                type='tel'
-                placeholder='Телефон'
-                {...formik.getFieldProps('phone')}
+                id='email'
+                type='text'
+                placeholder='Email'
+                {...formik.getFieldProps('email')}
             />
-            {formik.touched.phone && formik.errors.phone ? (
-                <div className={styles.errorMessage}>{formik.errors.phone}</div>
+            {formik.touched.email && formik.errors.email ? (
+                <div className={styles.errorMessage}>{formik.errors.email}</div>
             ) : null}
             <input
                 className={cx({

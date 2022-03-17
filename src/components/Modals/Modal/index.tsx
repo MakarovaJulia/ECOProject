@@ -1,31 +1,31 @@
-import React, {FC, ReactNode, useRef, useEffect, useCallback, ReactElement, JSXElementConstructor} from 'react';
+import React, {FC, ReactNode, useRef} from 'react';
 import styles from './index.module.scss'
 import {useStores} from "../../utils/use-stores-hook";
 import {Button} from "../../ui/Button";
 import {IoCloseOutline} from 'react-icons/io5'
-import {useNavigate} from "react-router";
+import {AuthPartnersModal} from "../AuthPartnersModal";
 
 interface Props {
     title: ReactNode;
     onClose: () => void;
-    isBtnForPartners: boolean;
+    hasBtnForPartners: boolean;
 }
 
 export const Modal: FC<Props> = ({title, onClose,
-                                     isBtnForPartners,
+                                     hasBtnForPartners,
                                      children}) => {
-    const {modalStore: {clearCurrentModal}} = useStores()
+    const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores()
     const modalRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-    let navigate = useNavigate()
 
     const closeModal = (e:any) => {
       if(modalRef.current === e.target){
           clearCurrentModal()
-          // navigate('/')
       }
     }
 
     const handleBtnForPartners = () => {
+        clearCurrentModal();
+        setCurrentModal(AuthPartnersModal)
     }
 
     return (
@@ -39,7 +39,7 @@ export const Modal: FC<Props> = ({title, onClose,
                 </div>
                 <div className={styles.modal_content}>
                     {children}
-                    {isBtnForPartners &&
+                    {hasBtnForPartners &&
                     <Button color={false} id={styles.btn_for_partners} onClick={handleBtnForPartners} title='Вход для партнеров'/>}
                 </div>
             </div>
