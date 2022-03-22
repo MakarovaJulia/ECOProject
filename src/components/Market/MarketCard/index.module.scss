@@ -1,43 +1,32 @@
 .itemCard {
   width: 16.5vw;
-  min-width: 100px;
+  min-width: 253px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
 }
 
 .price {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.brand {
-  line-height: 18px;
-  background: white;
-  box-shadow: 0 4px 24px rgba(51, 51, 51, 0.12);
-  border-radius: 10px;
-  width: min-content;
-  padding: 6px 10px;
-  display: flex;
-  justify-content: center;
+  line-height: 20px;
   font-size: 14px;
-  position: absolute;
-  left: 24px;
-  top: 24px;
-
+  font-weight: 600;
 }
 
 .cardTop {
   position: relative;
+  width: fit-content;
 }
 
-a {
-  display: block;
+.linksBlock {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
 }
 
-.title {
-  font-weight: 500;
-  line-height: 20px;
-  font-size: 16px;
-  color: #000B26E0;
-  cursor: pointer;
+.photo {
+  max-width:100%;
 }
 

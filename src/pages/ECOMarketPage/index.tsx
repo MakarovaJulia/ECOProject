@@ -1,10 +1,11 @@
 import {observer} from "mobx-react";
 import styles from "../MainPage/index.module.scss";
+import marketStyles from './index.module.scss';
 import {HeaderContainer} from "../../containers/HeaderContainer";
 import logo from "../../asserts/logo.svg";
 import {NavLink} from "react-router-dom";
-import {MarketCard} from "../../components/Market/MarketCard";
-import marketItemPhoto from "../../mocks/marketItemPhoto.jpg"
+import {MarketGoods} from "../../components/Market/MarketGoods";
+import {marketItemsMock} from "../../mocks/marketItemsMock";
 
 export const ECOMarketPage = observer(() => {
     return (
@@ -18,14 +19,16 @@ export const ECOMarketPage = observer(() => {
                 <div>Город</div>
                 <div>Войти</div>
             </HeaderContainer>
-            <h1>Эко маркет</h1>
-            <MarketCard
-                brand={'NIKE'}
-                photo={marketItemPhoto}
-                title={'Nike Air Max 2021'}
-                category={'Мужская обувь'}
-                price={'1000'}
-            />
+
+            <main className={marketStyles.contentAligner}>
+                <div className={marketStyles.mainContainer}>
+                    <h1>Эко маркет</h1>
+                    <div className={marketStyles.marketContainer}>
+                        <div className={marketStyles.filtersContainer}>Filters are here</div>
+                        <MarketGoods marketItems={marketItemsMock}/>
+                    </div>
+                </div>
+            </main>
         </div>
     )
 });

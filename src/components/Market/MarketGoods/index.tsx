@@ -1,6 +1,8 @@
 import {MarketCard} from "../MarketCard";
+import styles from './index.module.scss';
 
 interface IMarketItem {
+    id: string | number,
     brand: string,
     photo: string,
     title: string,
@@ -21,21 +23,23 @@ export const MarketGoods = (props: IMarketGoods) => {
         const cards = [];
         for (let item of marketItems) {
             cards.push(
-                <MarketCard
-                    brand={item.brand}
-                    photo={item.photo}
-                    title={item.title}
-                    category={item.category}
-                    price={item.price}
-                />
+                <li key={item.id} className={styles.listItem}>
+                    <MarketCard
+                        brand={item.brand}
+                        photo={item.photo}
+                        title={item.title}
+                        category={item.category}
+                        price={item.price}
+                    />
+                </li>
             )
         }
         return cards;
 
     }
     return (
-        <div>
+        <ul className={styles.goodsList}>
             {getCards(marketItems)}
-        </div>
+        </ul>
     )
 }
