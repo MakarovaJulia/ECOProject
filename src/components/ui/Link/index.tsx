@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import classNames from 'classnames/bind';
 
 import { ILink } from './index.interfaces';
@@ -6,19 +6,28 @@ import styles from './index.module.scss'
 
 const cx = classNames.bind(styles);
 
-export const Link = (props: ILink) => {
-    const { id, title, onClick, image} = props;
-
+export const Link: FC<ILink> = ({
+                                    id,
+                                    onClick,
+                                    image,
+                                    isMarketItemCat,
+                                    isMarketItemTitle,
+                                    isMarketItemBrand,
+                                    children
+}) => {
     return (
-        <link
+        <a
             onClick={onClick}
             className={cx({
-                link: true
+                link: true,
+                marketItemTitle: isMarketItemTitle,
+                marketItemCat: isMarketItemCat,
+                marketItemBrand: isMarketItemBrand
             })}
             id={id}
         >
-            <img src={image}/>
-            {title}
-        </link>
+            {image && <img src={image}/>}
+            {children}
+        </a>
     )
 }

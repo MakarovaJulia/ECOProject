@@ -1,0 +1,32 @@
+.itemCard {
+  width: 16.5vw;
+  min-width: 253px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cardTop {
+  position: relative;
+  width: fit-content;
+}
+
+.linksBlock {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.photo {
+  max-width:100%;
+}
+

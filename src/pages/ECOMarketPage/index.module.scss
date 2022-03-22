@@ -1,0 +1,19 @@
+.marketContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.filtersContainer {
+  flex: 0 0 23.5%;
+  background-color: #FFE48F;
+}
+
+.mainContainer {
+  max-width: 1200px;
+}
+
+.contentAligner {
+  display: flex;
+  justify-content: center;
+}
