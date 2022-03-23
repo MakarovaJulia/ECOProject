@@ -5,8 +5,17 @@
 }
 
 .filtersContainer {
-  flex: 0 0 23.5%;
-  background-color: #FFE48F;
+  border: 1px solid rgba(18, 34, 88, 0.12);
+  box-sizing: border-box;
+  border-radius: 16px;
+  width: 17vw;
+  min-width: 253px;
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  padding: 12px;
+  position: sticky;
+  top: 20vh;
 }
 
 .mainContainer {
