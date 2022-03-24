@@ -3,12 +3,11 @@ import classNames from 'classnames/bind';
 
 import { IButton } from './index.interfaces';
 import styles from './index.module.scss'
-import {NavLink} from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 export const Button = (props: IButton) => {
-    const { id, title, onClick, image, color, children, type} = props;
+    const { id, title, onClick, image, type} = props;
 
     return (
         <button
