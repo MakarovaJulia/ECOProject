@@ -10,11 +10,12 @@ export const MarketCard = (props: IMarketCard) => {
         photo,
         title,
         category,
-        price
+        price,
+        key,
     } = props;
 
     return (
-        <div className={styles.itemCard}>
+        <li key={key} className={styles.itemCard}>
             <div className={styles.cardTop}>
                 <Link isMarketItemBrand>{brand}</Link>
                 <Link>
@@ -35,6 +36,6 @@ export const MarketCard = (props: IMarketCard) => {
                     {price}
                 </div>
             </div>
-        </div>
+        </li>
     )
 }

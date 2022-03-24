@@ -8,4 +8,5 @@ export interface IButton {
     type?: 'submit' | 'reset' | 'button'
     children?: ReactNode;
     image?: string;
+    textMini?: boolean;
 }

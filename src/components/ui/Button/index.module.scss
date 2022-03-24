@@ -15,4 +15,9 @@
   @extend .btn;
   background: rgba(62, 80, 114, 0.08);
 }
+  &TextMini {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+  }
 }

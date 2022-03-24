@@ -3,5 +3,6 @@ export interface IMarketCard {
     photo: string,
     title: string,
     category: string,
-    price: string | number
+    price: string | number,
+    key: number | string,
 }
