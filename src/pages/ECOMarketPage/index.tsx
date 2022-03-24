@@ -25,7 +25,7 @@ export const ECOMarketPage = observer(() => {
                     <h1>Эко маркет</h1>
                     <div className={marketStyles.marketContainer}>
                         <div className={marketStyles.filtersContainer}>Filters are here</div>
-                        <MarketGoods marketItems={marketItemsMock}/>
+                        <MarketGoods marketItems={marketItemsMock} balance={'200'}/>
                     </div>
                 </div>
             </main>
