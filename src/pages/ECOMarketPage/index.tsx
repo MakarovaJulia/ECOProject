@@ -9,6 +9,7 @@ import {marketItemsMock} from "../../mocks/marketItemsMock";
 import {Button} from "../../components/ui/Button";
 import {Checkbox} from "../../components/ui/Checkbox";
 import {useState} from "react";
+import {CheckboxGroup} from "../../components/ui/CheckboxGroup";
 
 interface Item {
     name: string;
@@ -36,7 +37,6 @@ const allBrands: Item[] = [
 
 export const ECOMarketPage = observer(() => {
 
-    const [categories, setCategories] = useState(allCategories)
     const [genders, setGenders] = useState(allGenders)
     const [brands, setBrands] = useState(allBrands);
 
@@ -94,36 +94,39 @@ export const ECOMarketPage = observer(() => {
                                             title={gender.name}
                                             index={index}
                                             isChecked={gender.checked}
-                                            handleCheck={() => updateCheckStatus(index, setGenders, genders)}
+                                            onChange={() => updateCheckStatus(index, setGenders, genders)}
                                         />
                                     ))
                                     }
                                     <h3 className={marketStyles.itemsTitle}>
                                         Тип товара
                                     </h3>
-                                    {categories.map((category, index) => (
-                                        <Checkbox
-                                            title={category.name}
-                                            index={index}
-                                            isChecked={category.checked}
-                                            handleCheck={() => updateCheckStatus(index, setCategories, categories)}
-                                        />
-                                    ))
-                                    }
+                                    <CheckboxGroup isShowSelectAll multiple>
+                                        {allCategories.map((category, index) => (
+                                            <Checkbox
+                                                title={category.name}
+                                                index={index}
+                                                isChecked={category.checked}
+                                                onChange={() => {}}
+                                            />
+                                        ))
+                                        }
+                                    </CheckboxGroup>
+
                                     <h3 className={marketStyles.itemsTitle}>
                                         Бренд
                                     </h3>
                                     <Checkbox
                                         title={"Выбрать все"}
                                         isChecked={false}
-                                        handleCheck={() => {}}
+                                        onChange={() => {}}
                                     />
                                     {brands.map((brand, index)=>
                                         <Checkbox
                                             title={brand.name}
                                             index={index}
                                             isChecked={brand.checked}
-                                            handleCheck={() => updateCheckStatus(index, setBrands, brands)}
+                                            onChange={() => updateCheckStatus(index, setBrands, brands)}
                                         />
                                     )}
                                 </div>

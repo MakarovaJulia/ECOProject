@@ -7,18 +7,18 @@ const cx = classNames.bind(styles);
 
 
 export const Checkbox: FC<ICheckbox> = (props: ICheckbox) => {
-    const {index, title, isChecked, handleCheck, className} = props
+    const {index, title, isChecked, onChange, className} = props
 
     return (
         <div className={cx(styles.checkboxWrapper, className)}>
             <input type="checkbox"
-                   onChange={handleCheck}
+                   onChange={onChange}
                    checked={isChecked}
                    id={`checkbox-${index}`}
                    className={styles.checkbox}
             />
             <label className={styles.checkboxTitle}
-                   htmlFor="checkbox" onClick={handleCheck}>{title}</label>
+                   htmlFor="checkbox" onClick={onChange}>{title}</label>
         </div>
     )
 }

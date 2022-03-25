@@ -3,5 +3,5 @@ export interface ICheckbox {
     isChecked: boolean
     className?: string
     title: string;
-    handleCheck:any
+    onChange:any
 }
