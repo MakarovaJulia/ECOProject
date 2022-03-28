@@ -31,10 +31,10 @@ isShowSelectAll = false}) =>{
 
     return(
         <>
-            {isShowSelectAll && (
-                <Checkbox {...props}>Показать все</Checkbox>
-            )}
-            {newChildren}
+            {/*{isShowSelectAll && (*/}
+            {/*    <Checkbox {...props}>Показать все</Checkbox>*/}
+            {/*)}*/}
+            {/*{newChildren}*/}
         </>
     )
 }

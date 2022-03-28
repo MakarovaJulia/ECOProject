@@ -7,6 +7,7 @@ import {NavLink} from "react-router-dom";
 import {MarketGoods} from "../../components/Market/MarketGoods";
 import {marketItemsMock} from "../../mocks/marketItemsMock";
 import {Button} from "../../components/ui/Button";
+import {FilterButton} from "../../components/ui/FilterButton";
 import {Checkbox} from "../../components/ui/Checkbox";
 import {useState} from "react";
 import {CheckboxGroup} from "../../components/ui/CheckboxGroup";
@@ -35,27 +36,72 @@ const allBrands: Item[] = [
     {name: "Rebook", checked: false}
 ]
 
+const allSortings: Item[] = [
+    { name: "По популярности", checked: false},
+    { name: "По цене", checked: false},
+    { name: "По новизне", checked: false},
+]
+
 export const ECOMarketPage = observer(() => {
 
+    const [allProductsCategories, setAllProductsCategories] = useState(false);
+    const [allProductsBrand, setAllProductsBrand] = useState(false);
+    const [sortings, setSorting] = useState(allSortings)
     const [genders, setGenders] = useState(allGenders)
+    const [categories, setCategories] = useState(allCategories)
     const [brands, setBrands] = useState(allBrands);
 
-    const dropFilters = ()=> {
+    let filteredData = marketItemsMock
+
+
+    const sortByPrice = (index: number)=> {
+        if (index === 1) {
+            filteredData.sort((a, b) => {
+                return -(a.price - b.price)
+            })
+        }
     }
 
-    const filterByPopularity = ()=> {
+    const sortByRating = (index: number)=> {
+        if (index === 0) {
+            filteredData.sort((a, b) => {
+                return -(a.rating - b.rating)
+            })
+        }
     }
 
-    const filterByPrice = ()=> {
+    const sortByDate = (index: number)=> {
+        if (index === 2) {
+            filteredData.sort((a, b) => {
+                return -(new Date(a.date).valueOf() - new Date(b.date).valueOf())
+            })
+        }
     }
 
-    const filterByNovelty = ()=> {
-    }
+    const handleClickSort = ( index: number ) => {
+        setSorting(sortings.map((sorting: Item, currentIndex: number) => currentIndex === index ?
+            {...sorting, checked: true}
+            : {...sorting, checked: false}))
+        sortByPrice(index)
+        sortByRating(index)
+        sortByDate(index)
+        console.log(filteredData)
+        }
 
     const updateCheckStatus = (index: number, setItems: any, items: Item[]) => {
         setItems(
             items.map((item: Item, currentIndex: number) =>
                 currentIndex === index ? {...item, checked: !item.checked} : item
+            )
+        )
+    }
+
+    const updateCheckStatusAll = ( allItems: boolean, setAllItems: any, setItems: any, items: Item[] ) => {
+        setAllItems(!allItems)
+        setItems(
+            items.map((item: Item) =>
+                allItems ? {...item, checked: false} :
+                    {...item, checked: true}
             )
         )
     }
@@ -77,9 +123,18 @@ export const ECOMarketPage = observer(() => {
                     <div className={marketStyles.filterHeaderWrapper}>
                         <h1>Эко маркет</h1>
                         <div className={marketStyles.filterBtnWrapper}>
-                            <Button id={marketStyles.filterBtn} color={false} title={"По популярности"} onClick={filterByPopularity}/>
-                            <Button id={marketStyles.filterBtn} color={false} title={"По цене"} onClick={filterByPrice}/>
-                            <Button id={marketStyles.filterBtn} color={false} title={"По новизне"} onClick={filterByNovelty}/>
+                            { sortings.map((sorting, index) => (
+                                <FilterButton
+                                    id={marketStyles.filterBtn}
+                                    title={ sorting.name }
+                                    type={"button"}
+                                    isActive={ sorting.checked }
+                                    onClick={() => {
+                                        handleClickSort(index)
+                                        console.log( sorting.checked )
+                                    }}/>
+                                ))
+                            }
                         </div>
                     </div>
                     <div className={marketStyles.marketContainer}>
@@ -101,25 +156,10 @@ export const ECOMarketPage = observer(() => {
                                     <h3 className={marketStyles.itemsTitle}>
                                         Тип товара
                                     </h3>
-                                    <CheckboxGroup isShowSelectAll multiple>
-                                        {allCategories.map((category, index) => (
-                                            <Checkbox
-                                                title={category.name}
-                                                index={index}
-                                                isChecked={category.checked}
-                                                onChange={() => {}}
-                                            />
-                                        ))
-                                        }
-                                    </CheckboxGroup>
-
-                                    <h3 className={marketStyles.itemsTitle}>
-                                        Бренд
-                                    </h3>
                                     <Checkbox
                                         title={"Выбрать все"}
-                                        isChecked={false}
-                                        onChange={() => {}}
+                                        isChecked={allProductsBrand}
+                                        onChange={() => updateCheckStatusAll(allProductsBrand, setAllProductsBrand, setBrands, brands)}
                                     />
                                     {brands.map((brand, index)=>
                                         <Checkbox
@@ -129,11 +169,39 @@ export const ECOMarketPage = observer(() => {
                                             onChange={() => updateCheckStatus(index, setBrands, brands)}
                                         />
                                     )}
+                                   {/*<CheckboxGroup isShowSelectAll multiple>*/}
+                                   {/*     {allCategories.map((category, index) => (*/}
+                                   {/*         <Checkbox*/}
+                                   {/*             title={category.name}*/}
+                                   {/*             index={index}*/}
+                                   {/*             isChecked={category.checked}*/}
+                                   {/*             onChange={() => {}}*/}
+                                   {/*         />*/}
+                                   {/*     ))*/}
+                                   {/*     }*/}
+                                   {/* </CheckboxGroup>*/}
+
+                                    <h3 className={marketStyles.itemsTitle}>
+                                        Бренд
+                                    </h3>
+                                    <Checkbox
+                                        title={"Выбрать все"}
+                                        isChecked={allProductsCategories}
+                                        onChange={() => updateCheckStatusAll(allProductsCategories, setAllProductsCategories, setCategories, categories)}
+                                    />
+                                    {categories.map((category, index)=>
+                                        <Checkbox
+                                            title={category.name}
+                                            index={index}
+                                            isChecked={category.checked}
+                                            onChange={() => updateCheckStatus(index, setCategories, categories)}
+                                        />
+                                    )}
                                 </div>
                             </div>
                             <Button id={marketStyles.filterDropBtn} color={false} title={"Сбросить фильтры"} onClick={dropFilters}/>
                         </div>
-                        <MarketGoods marketItems={marketItemsMock}/>
+                        <MarketGoods marketItems={filteredData}/>
                     </div>
                 </div>
             </main>

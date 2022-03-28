@@ -4,7 +4,9 @@ interface IMarketItem {
     photo: string;
     title: string;
     category: string;
-    price: string;
+    price: number;
+    rating: number;
+    date: string
 }
 
 
@@ -15,7 +17,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto1.jpg',
         title: 'Nike Air Max 2021',
         category: 'Мужская обувь',
-        price: '1000'
+        price: 1000,
+        rating: 7,
+        date: '2020-12-10'
     },
     {
         id: 1,
@@ -23,7 +27,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto2.jpg',
         title: 'Nike Air Max 90 Premium',
         category: 'Мужская обувь',
-        price: '750'
+        price: 750,
+        rating: 5.4,
+        date: '2022-01-03'
     },
     {
         id: 2,
@@ -31,7 +37,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto3.jpg',
         title: 'Nike Air Max 2021',
         category: 'Мужская обувь',
-        price: '1000'
+        price: 1000,
+        rating: 6.8,
+        date: '2021-11-21'
     },
     {
         id: 3,
@@ -39,7 +47,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto4.jpg',
         title: 'Adidas Alphabounce RC',
         category: 'Мужская обувь',
-        price: '1200'
+        price: 1200,
+        rating: 9,
+        date: '2022-03-23'
     },
     {
         id: 4,
@@ -47,7 +57,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto5.jpg',
         title: 'Nike Air Max 2021',
         category: 'Мужская обувь',
-        price: '1000'
+        price: 1000,
+        rating: 7.5,
+        date: '2021-05-12'
     },
     {
         id: 5,
@@ -55,7 +67,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto1.jpg',
         title: 'Nike Air Force 1 Low',
         category: 'Мужская обувь',
-        price: '2100'
+        price: 2100,
+        rating: 8,
+        date: '2022-01-18'
     },
     {
         id: 6,
@@ -63,7 +77,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto1.jpg',
         title: 'Nike Air Max 2021',
         category: 'Мужская обувь',
-        price: '1000'
+        price: 1000,
+        rating: 8.1,
+        date: '2021-04-11'
     },
     {
         id: 7,
@@ -71,7 +87,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto2.jpg',
         title: 'Nike Air Max 90 Premium',
         category: 'Мужская обувь',
-        price: '750'
+        price: 750,
+        rating: 7,
+        date: '2022-03-28'
     },
     {
         id: 8,
@@ -79,7 +97,9 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto4.jpg',
         title: 'Adidas Alphabounce RC',
         category: 'Мужская обувь',
-        price: '1200'
+        price: 1200,
+        rating: 5.9,
+        date: '2021-12-13'
     },
     {
         id: 9,
@@ -87,6 +107,8 @@ export const marketItemsMock: IMarketItem[] = [
         photo: 'marketItemPhoto2.jpg',
         title: 'Nike Air Max 90 Premium',
         category: 'Мужская обувь',
-        price: '750'
+        price: 750,
+        rating: 7.8,
+        date: '2020-12-22'
     }
 ]
