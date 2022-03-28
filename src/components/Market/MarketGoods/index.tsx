@@ -1,9 +1,7 @@
 import {MarketCard} from "../MarketCard";
 import styles from './index.module.scss';
-import currency_img from '../../../asserts/currency.svg'
-import {Button} from "../../ui/Button";
 import {IMarketGoods, IMarketItem} from "./index.interfaces";
-
+import {GetPromoCodeCard} from "../GetPromoCodeCard";
 
 
 export const MarketGoods = (props: IMarketGoods) => {
@@ -22,7 +20,6 @@ export const MarketGoods = (props: IMarketGoods) => {
                     price={item.price}
                     key={item.id}
                 />
-
             )
         }
         return cards;
@@ -30,19 +27,7 @@ export const MarketGoods = (props: IMarketGoods) => {
     }
     return (
         <ul className={styles.goodsList}>
-            <li className={styles.promoCodeCard}>
-                <div className={styles.promoCodeCardContent}>
-                    <div className={styles.balanceTitle}>
-                        На вашем балансе
-                        <img src={currency_img} alt='валюта'/>
-                        <span>{balance}</span>
-                    </div>
-                    <div className={styles.balanceSubtitle}>
-                        Вы можете обменять их на скидку {balance} руб.
-                    </div>
-                </div>
-                <Button color textMini title='Получить промокод' />
-            </li>
+            <GetPromoCodeCard balance={balance} />
             {getCards(marketItems)}
         </ul>
     )

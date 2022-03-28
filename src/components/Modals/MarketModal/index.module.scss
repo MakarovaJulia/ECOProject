@@ -1,0 +1,38 @@
+.getCodeCardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+
+  div {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000B26B8;
+  }
+
+  h4 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    color: #000B26E0;
+    align-self: center;
+    margin: 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.imgWrapper {
+  //flex: 0 0 10vh;
+
+  max-height: 400px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}

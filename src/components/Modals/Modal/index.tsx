@@ -9,11 +9,17 @@ interface Props {
     title: ReactNode;
     onClose: () => void;
     hasBtnForPartners: boolean;
+    hideCloseBtn?: boolean;
 }
 
-export const Modal: FC<Props> = ({title, onClose,
-                                     hasBtnForPartners,
-                                     children}) => {
+export const    Modal: FC<Props> = (
+    {
+        title,
+        onClose,
+        hasBtnForPartners,
+        children,
+        hideCloseBtn=false
+    }) => {
     const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores()
     const modalRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -33,9 +39,11 @@ export const Modal: FC<Props> = ({title, onClose,
             <div className={styles.modal_window}>
                 <div className={styles.modal_header}>
                     <h3>{title}</h3>
-                    <button onClick={onClose} className={styles.modal_close_btn}>
-                        <IoCloseOutline className={styles.modal_close_icon}/>
-                    </button>
+                    {!hideCloseBtn &&
+                        <button onClick={onClose} className={styles.modal_close_btn}>
+                            <IoCloseOutline className={styles.modal_close_icon}/>
+                        </button>
+                    }
                 </div>
                 <div className={styles.modal_content}>
                     {children}
