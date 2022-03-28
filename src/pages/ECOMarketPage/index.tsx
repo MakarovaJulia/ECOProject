@@ -31,9 +31,9 @@ const allCategories: Item[] = [
 const allBrands: Item[] = [
     {name: "H&M", checked: false},
     {name: "P&B", checked: false},
-    {name: "Adidas", checked: false},
-    {name: "Nike", checked: false},
-    {name: "Rebook", checked: false}
+    {name: "ADIDAS", checked: false},
+    {name: "NIKE", checked: false},
+    {name: "REBOOK", checked: false}
 ]
 
 const allSortings: Item[] = [
@@ -52,6 +52,9 @@ export const ECOMarketPage = observer(() => {
     const [brands, setBrands] = useState(allBrands);
 
     let filteredData = marketItemsMock
+
+    const dropFilters = ()=> {
+    }
 
 
     const sortByPrice = (index: number)=> {
@@ -85,7 +88,6 @@ export const ECOMarketPage = observer(() => {
         sortByPrice(index)
         sortByRating(index)
         sortByDate(index)
-        console.log(filteredData)
         }
 
     const updateCheckStatus = (index: number, setItems: any, items: Item[]) => {
@@ -94,6 +96,15 @@ export const ECOMarketPage = observer(() => {
                 currentIndex === index ? {...item, checked: !item.checked} : item
             )
         )
+        filteredData = [];
+        marketItemsMock.forEach((item) =>{
+            let res = Object.values(item).map((prop)=> prop === items.find((item)=> item.checked)?.name)
+            if(res.find((el) => el)){
+                filteredData.push(item)
+                console.log(filteredData)
+                console.log('data pushed')
+            }
+        })
     }
 
     const updateCheckStatusAll = ( allItems: boolean, setAllItems: any, setItems: any, items: Item[] ) => {
@@ -104,6 +115,7 @@ export const ECOMarketPage = observer(() => {
                     {...item, checked: true}
             )
         )
+       // console.log(items.find((item)=> item.checked)?.name)
     }
 
     return (
@@ -158,15 +170,15 @@ export const ECOMarketPage = observer(() => {
                                     </h3>
                                     <Checkbox
                                         title={"Выбрать все"}
-                                        isChecked={allProductsBrand}
-                                        onChange={() => updateCheckStatusAll(allProductsBrand, setAllProductsBrand, setBrands, brands)}
+                                        isChecked={allProductsCategories}
+                                        onChange={() => updateCheckStatusAll(allProductsCategories, setAllProductsCategories, setCategories, categories)}
                                     />
-                                    {brands.map((brand, index)=>
+                                    {categories.map((category, index)=>
                                         <Checkbox
-                                            title={brand.name}
+                                            title={category.name}
                                             index={index}
-                                            isChecked={brand.checked}
-                                            onChange={() => updateCheckStatus(index, setBrands, brands)}
+                                            isChecked={category.checked}
+                                            onChange={() => updateCheckStatus(index, setCategories, categories)}
                                         />
                                     )}
                                    {/*<CheckboxGroup isShowSelectAll multiple>*/}
@@ -186,15 +198,15 @@ export const ECOMarketPage = observer(() => {
                                     </h3>
                                     <Checkbox
                                         title={"Выбрать все"}
-                                        isChecked={allProductsCategories}
-                                        onChange={() => updateCheckStatusAll(allProductsCategories, setAllProductsCategories, setCategories, categories)}
+                                        isChecked={allProductsBrand}
+                                        onChange={() => updateCheckStatusAll(allProductsBrand, setAllProductsBrand, setBrands, brands)}
                                     />
-                                    {categories.map((category, index)=>
+                                    {brands.map((brand, index)=>
                                         <Checkbox
-                                            title={category.name}
+                                            title={brand.name}
                                             index={index}
-                                            isChecked={category.checked}
-                                            onChange={() => updateCheckStatus(index, setCategories, categories)}
+                                            isChecked={brand.checked}
+                                            onChange={() => updateCheckStatus(index, setBrands, brands)}
                                         />
                                     )}
                                 </div>
