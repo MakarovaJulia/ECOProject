@@ -19,13 +19,14 @@ export const MarketModal = observer(() => {
             hideCloseBtn
         >
             <div className={styles.getCodeCardWrapper}>
-                <div>При оплате покажите его сотруднику на кассе</div>
+                <div className={styles.qrDescription}>
+                    При оплате покажите его сотруднику на кассе
+                </div>
                 <div className={styles.imgWrapper}>
                     <img src={qrImgMock} alt='qr-код' />
                 </div>
-
                 <h4>{codeMock}</h4>
-                <div>
+                <div className={styles.qrDescription}>
                     Если не получается отсканировать QR-код,
                     введите код вручную или продиктуйте сотруднику на кассе
                 </div>

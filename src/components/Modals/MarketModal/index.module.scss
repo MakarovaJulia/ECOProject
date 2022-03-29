@@ -4,7 +4,7 @@
   justify-content: space-between;
   gap: 24px;
 
-  div {
+  .qrDescription {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -26,13 +26,10 @@
 }
 
 .imgWrapper {
-  //flex: 0 0 10vh;
-
-  max-height: 400px;
-
+  height: 32vh;
+  align-self: center;
   img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
   }
 }
