@@ -96,15 +96,15 @@ export const ECOMarketPage = observer(() => {
                 currentIndex === index ? {...item, checked: !item.checked} : item
             )
         )
-        filteredData = [];
+        filteredData = []
         marketItemsMock.forEach((item) =>{
             let res = Object.values(item).map((prop)=> prop === items.find((item)=> item.checked)?.name)
             if(res.find((el) => el)){
                 filteredData.push(item)
-                console.log(filteredData)
                 console.log('data pushed')
             }
         })
+        console.log(filteredData)
     }
 
     const updateCheckStatusAll = ( allItems: boolean, setAllItems: any, setItems: any, items: Item[] ) => {
