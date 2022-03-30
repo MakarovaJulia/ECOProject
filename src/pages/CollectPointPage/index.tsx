@@ -4,6 +4,9 @@ import {HeaderContainer} from "../../containers/HeaderContainer";
 import logo from "../../asserts/logo.svg";
 import {NavLink} from "react-router-dom";
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
+import {mapItemsMock} from "../../mocks/mapItemsMock";
+import {MapItems} from "../../components/Map/MapItems";
+import {LayoutContainer} from "../../containers/LayoutContainer";
 
 export const CollectPointPage = observer(() => {
     return (
@@ -26,6 +29,12 @@ export const CollectPointPage = observer(() => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 />
+                <LayoutContainer>
+                    <div className={styles.map_menu}>
+                        MENU HERE
+                    </div>
+                    <MapItems mapItems={mapItemsMock}/>
+                </LayoutContainer>
             </MapContainer>
         </div>
     )
