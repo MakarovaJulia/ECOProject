@@ -33,8 +33,6 @@ export const CollectPointPage = observer(() => {
                 <LayoutContainer>
                     <div className={styles.map_menu}>
                         <Input value={'Поиск'}/>
-                        <div className={styles.shops_choosen}/>
-                        <div className={styles.shops_choosen}/>
                     </div>
                     <MapItems mapItems={mapItemsMock}/>
                 </LayoutContainer>
