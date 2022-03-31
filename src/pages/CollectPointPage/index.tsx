@@ -7,6 +7,7 @@ import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 import {mapItemsMock} from "../../mocks/mapItemsMock";
 import {MapItems} from "../../components/Map/MapItems";
 import {LayoutContainer} from "../../containers/LayoutContainer";
+import {Input} from "../../components/ui/Input";
 
 export const CollectPointPage = observer(() => {
     return (
@@ -31,7 +32,9 @@ export const CollectPointPage = observer(() => {
                 />
                 <LayoutContainer>
                     <div className={styles.map_menu}>
-                        MENU HERE
+                        <Input value={'Поиск'}/>
+                        <div className={styles.shops_choosen}/>
+                        <div className={styles.shops_choosen}/>
                     </div>
                     <MapItems mapItems={mapItemsMock}/>
                 </LayoutContainer>
