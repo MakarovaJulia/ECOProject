@@ -19,8 +19,8 @@ export const AuthPartnersForm = () => {
         validationSchema: authPartnersValidationSchema,
         onSubmit: values => {
             login({
-                loginValue: values.email,
-                passwordValue: values.password
+                login: values.email,
+                password: values.password
             })
         },
     })

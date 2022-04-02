@@ -11,6 +11,7 @@ export const AuthForm = () => {
 
     const  {authStore: {login}} = useStores();
 
+
     const formik = useFormik({
         initialValues: {
             phone: '',
@@ -19,9 +20,9 @@ export const AuthForm = () => {
         validationSchema: authValidationSchema,
         onSubmit: values => {
             login({
-                loginValue: values.phone,
-                passwordValue: values.password
-            })
+                login: values.phone,
+                password: values.password
+            });
         },
     })
 
