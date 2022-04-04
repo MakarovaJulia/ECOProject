@@ -42,7 +42,6 @@ export default class AuthStore {
             .then((res) => {
                 this.isLoading = false;
                 this.token = res.data.token;
-                alert('You entered successfully')
             })
             .catch((err) => {
                 this.isLoading = false;

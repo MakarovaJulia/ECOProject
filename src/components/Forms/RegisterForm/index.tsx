@@ -6,20 +6,24 @@ import {observer} from "mobx-react";
 import {useStores} from "../../utils/use-stores-hook";
 import classNames from "classnames/bind";
 import axios from "axios";
+import {useNavigate} from "react-router";
 
 const cx = classNames.bind(styles);
 
 export const RegisterForm = observer((props: { onClick: () => void }) => {
     const url = "https://ecoapp.cloud.technokratos.com/eco-rus/api/v1/account"
 
-    const {authStore: {setPhone, phone}} = useStores();
+    let navigate = useNavigate()
+
+    const {authStore: {setPhone, phone}, modalStore:{clearCurrentModal}} = useStores();
 
     const {onClick} = props;
 
     const submit = (accountData: {phone_number: string, password: string}) => {
         axios.post(url, accountData)
             .then((res) => {
-                alert('You entered successfully')
+                clearCurrentModal()
+                navigate('/profile')
             })
             .catch((err) => {
                 console.log(err);

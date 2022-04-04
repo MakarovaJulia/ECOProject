@@ -4,12 +4,15 @@ import {useFormik} from "formik";
 import {authValidationSchema} from "../../utils/validationSchemas";
 import styles from '../styles.module.scss';
 import classNames from "classnames/bind";
+import {useNavigate} from "react-router";
 
 const cx = classNames.bind(styles);
 
 export const AuthForm = () => {
 
-    const  {authStore: {login}} = useStores();
+    let navigate = useNavigate()
+
+    const  {authStore: {login, isError}, modalStore: {clearCurrentModal}} = useStores();
 
 
     const formik = useFormik({
@@ -23,6 +26,10 @@ export const AuthForm = () => {
                 login: values.phone,
                 password: values.password
             });
+            if (!isError) {
+                clearCurrentModal()
+                navigate('/profile')
+            }
         },
     })
 

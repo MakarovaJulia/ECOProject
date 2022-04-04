@@ -4,12 +4,14 @@ import {useFormik} from "formik";
 import {authPartnersValidationSchema} from "../../utils/validationSchemas";
 import styles from '../styles.module.scss';
 import classNames from "classnames/bind";
+import {useNavigate} from "react-router";
 
 const cx = classNames.bind(styles);
 
 export const AuthPartnersForm = () => {
+    let navigate = useNavigate()
 
-    const  {authStore: {login}} = useStores();
+    const  {authStore: {login, isError}, modalStore: {clearCurrentModal}} = useStores();
 
     const formik = useFormik({
         initialValues: {
@@ -22,6 +24,10 @@ export const AuthPartnersForm = () => {
                 login: values.email,
                 password: values.password
             })
+            if (!isError){
+                clearCurrentModal()
+                navigate('/profile')
+            }
         },
     })
 
