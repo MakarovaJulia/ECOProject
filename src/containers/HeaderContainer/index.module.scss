@@ -38,6 +38,8 @@
 }
 
 .header_right{
+  display: flex;
+  flex-direction: row;
   margin-right: 24px;
 }
 
@@ -53,3 +55,16 @@
 .header_icon{
   margin-right: 10px;
 }
+
+.user{
+  display:flex;
+  flex-direction: row;
+}
+
+.no_user_photo{
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #07C88E;
+}
+
