@@ -25,7 +25,7 @@ export const AuthForm = () => {
             login({
                 login: values.phone,
                 password: values.password
-            });
+            })
             if (!isError) {
                 clearCurrentModal()
                 navigate('/profile')

@@ -11,24 +11,13 @@ import {useNavigate} from "react-router";
 const cx = classNames.bind(styles);
 
 export const RegisterForm = observer((props: { onClick: () => void }) => {
-    const url = "https://ecoapp.cloud.technokratos.com/eco-rus/api/v1/account"
 
     let navigate = useNavigate()
 
-    const {authStore: {setPhone, phone}, modalStore:{clearCurrentModal}} = useStores();
+    const {authStore: {signup, isError}, modalStore:{clearCurrentModal}} = useStores();
 
     const {onClick} = props;
 
-    const submit = (accountData: {phone_number: string, password: string}) => {
-        axios.post(url, accountData)
-            .then((res) => {
-                clearCurrentModal()
-                navigate('/profile')
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
 
     const formik = useFormik({
         initialValues: {
@@ -37,10 +26,14 @@ export const RegisterForm = observer((props: { onClick: () => void }) => {
         },
         validationSchema: authValidationSchema,
         onSubmit: values => {
-            submit({
+            signup({
                 phone_number: values.phone,
                 password: values.password
             });
+            if (!isError) {
+                clearCurrentModal()
+                navigate('/profile')
+            }
         },
     })
 
