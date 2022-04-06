@@ -1,7 +1,6 @@
-import {MarketCard} from "../MarketCard";
 import styles from './index.module.scss';
 import {IMarketGoods, IMarketItem} from "./index.interfaces";
-import {GetPromoCodeCard} from "../GetPromoCodeCard";
+import {CardManager} from "../CardManager";
 
 
 export const MarketGoods = (props: IMarketGoods) => {
@@ -12,13 +11,14 @@ export const MarketGoods = (props: IMarketGoods) => {
         const cards = [];
         for (let item of marketItems) {
             cards.push(
-                <MarketCard
+                <CardManager
                     brand={item.brand}
                     photo={item.photo}
                     title={item.title}
                     category={item.category}
                     price={item.price}
                     key={item.id}
+                    balance={balance}
                 />
             )
         }
@@ -27,7 +27,6 @@ export const MarketGoods = (props: IMarketGoods) => {
     }
     return (
         <ul className={styles.goodsList}>
-            <GetPromoCodeCard balance={balance} />
             {getCards(marketItems)}
         </ul>
     )

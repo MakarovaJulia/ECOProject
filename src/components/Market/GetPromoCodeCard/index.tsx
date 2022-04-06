@@ -17,7 +17,7 @@ export const GetPromoCodeCard: FC<IGetPromoCodeCard> = observer(({balance}) => {
     }
 
     return (
-        <li className={styles.promoCodeCard}>
+        <div className={styles.promoCodeCard}>
             <div className={styles.promoCodeCardContent}>
                 <div className={styles.balanceTitle}>
                     На вашем балансе
@@ -29,6 +29,6 @@ export const GetPromoCodeCard: FC<IGetPromoCodeCard> = observer(({balance}) => {
                 </div>
             </div>
             <Button color textMini title='Получить промокод' onClick={openModal}/>
-        </li>
+        </div>
     );
 })
