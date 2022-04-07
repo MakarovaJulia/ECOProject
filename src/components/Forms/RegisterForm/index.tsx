@@ -1,27 +1,39 @@
 import {Button} from "../../ui/Button";
 import {useFormik} from "formik";
-import {regValidationSchema} from "../../utils/validationSchemas";
+import {authValidationSchema, regValidationSchema} from "../../utils/validationSchemas";
 import styles from "../styles.module.scss";
 import {observer} from "mobx-react";
 import {useStores} from "../../utils/use-stores-hook";
 import classNames from "classnames/bind";
+import axios from "axios";
+import {useNavigate} from "react-router";
 
 const cx = classNames.bind(styles);
 
 export const RegisterForm = observer((props: { onClick: () => void }) => {
 
+    let navigate = useNavigate()
+
+    const {authStore: {signup, isError}, modalStore:{clearCurrentModal}} = useStores();
+
     const {onClick} = props;
 
-    const {authStore: {setPhone}} = useStores();
 
     const formik = useFormik({
         initialValues: {
-            phone: ''
+            phone: '',
+            password: ''
         },
-        validationSchema: regValidationSchema,
+        validationSchema: authValidationSchema,
         onSubmit: values => {
-            setPhone(values.phone);
-            onClick();
+            signup({
+                phone_number: values.phone,
+                password: values.password
+            });
+            if (!isError) {
+                clearCurrentModal()
+                navigate('/profile')
+            }
         },
     })
 
@@ -39,6 +51,19 @@ export const RegisterForm = observer((props: { onClick: () => void }) => {
             />
             {formik.touched.phone && formik.errors.phone ? (
                 <div className={styles.errorMessage}>{formik.errors.phone}</div>
+            ) : null}
+            <input
+                className={cx({
+                    input: true,
+                    inputError: formik.touched.password && formik.errors.password
+                })}
+                id='password'
+                type='password'
+                placeholder='Пароль'
+                {...formik.getFieldProps('password')}
+            />
+            {formik.touched.password && formik.errors.password ? (
+                <div className={styles.errorMessage}>{formik.errors.password}</div>
             ) : null}
             <Button
                 title='Получить код'
