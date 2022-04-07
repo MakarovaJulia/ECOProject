@@ -7,6 +7,7 @@ import {useStores} from "../../utils/use-stores-hook";
 import classNames from "classnames/bind";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import {AuthModal} from "../../Modals/AuthModal";
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,7 @@ export const RegisterForm = observer((props: { onClick: () => void }) => {
 
     let navigate = useNavigate()
 
-    const {authStore: {signup, isError}, modalStore:{clearCurrentModal}} = useStores();
+    const {authStore: {signup, isError, logout}, modalStore:{clearCurrentModal, setCurrentModal}} = useStores();
 
     const {onClick} = props;
 
@@ -32,7 +33,8 @@ export const RegisterForm = observer((props: { onClick: () => void }) => {
             });
             if (!isError) {
                 clearCurrentModal()
-                navigate('/profile')
+                logout()
+                setCurrentModal(AuthModal)
             }
         },
     })

@@ -1,10 +1,8 @@
 import {MainStore} from "./mainStore";
 import {makeObservable, observable, action, computed} from "mobx";
-import {loginRequest} from "../utils/loginRequiest";
 import axios from "axios";
 
 interface userProps{
-    //token: string,
     id?: string,
     photo_url?: string,
     firstname?: string,
@@ -27,26 +25,22 @@ export default class AuthStore {
             username: '',
             phone_number: '',
             email: '',
-           // token: '',
             balance: 0
         }
         makeObservable(this,{
-            //token: observable,
             isLoading: observable,
             isError: observable,
             phone: observable,
             login: action,
             signup: action,
             logout: action,
-            //setPhone: action,
-            //clearPhone: action,
             isAuthorized: computed,
             user: observable,
-           // getUserToken: action,
-            getUserInfo: action
+            getUserInfo: action,
+            setPhone: action,
+            clearPhone: action
         })
 
-       // this.token = '';
         this.isLoading = false;
         this.isError = false;
         this.phone = '';
@@ -54,7 +48,6 @@ export default class AuthStore {
 
 
     get isAuthorized() {
-       // return this.user.token !== '' && this.user.token !== null;
         return localStorage.getItem("token")!== null && localStorage.getItem("token")!==''
     }
 
@@ -78,7 +71,6 @@ export default class AuthStore {
         this.isError = false;
         axios.post("account", accountData)
             .then((res) => {
-                localStorage.setItem("token", res.data.token);
                 localStorage.setItem("user", JSON.stringify(res.data))
             })
             .catch((err) => {
@@ -89,8 +81,8 @@ export default class AuthStore {
 
     logout = () => {
         console.log('logout');
-        //this.user.token = '';
         localStorage.removeItem("token")
+        localStorage.removeItem("user")
         this.isError = false;
     };
 
@@ -101,10 +93,6 @@ export default class AuthStore {
     clearPhone = () => {
         this.phone = '';
     }
-
-    // getUserToken = () => {
-    //     return this.user.token;
-    // }
 
     getUserInfo = () => {
         return this.user;
