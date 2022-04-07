@@ -24,6 +24,13 @@ export const HeaderContainer = observer((props: any) =>{
         navigate('/profile');
     }
 
+    const check = () =>{
+        let res = localStorage.getItem("token")!== null && localStorage.getItem("token")!==''
+        console.log(localStorage.getItem("token"))
+    }
+
+    check()
+
 
     return (
         <>

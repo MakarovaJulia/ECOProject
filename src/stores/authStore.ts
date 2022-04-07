@@ -3,12 +3,8 @@ import {makeObservable, observable, action, computed} from "mobx";
 import {loginRequest} from "../utils/loginRequiest";
 import axios from "axios";
 
-const urlLogin = "https://ecoapp.cloud.technokratos.com/eco-rus/api/v1/login"
-
-const urlSignup = "https://ecoapp.cloud.technokratos.com/eco-rus/api/v1/account"
-
 interface userProps{
-    token: string,
+    //token: string,
     id?: string,
     photo_url?: string,
     firstname?: string,
@@ -31,7 +27,7 @@ export default class AuthStore {
             username: '',
             phone_number: '',
             email: '',
-            token: '',
+           // token: '',
             balance: 0
         }
         makeObservable(this,{
@@ -46,7 +42,7 @@ export default class AuthStore {
             //clearPhone: action,
             isAuthorized: computed,
             user: observable,
-            getUserToken: action,
+           // getUserToken: action,
             getUserInfo: action
         })
 
@@ -58,16 +54,18 @@ export default class AuthStore {
 
 
     get isAuthorized() {
-        return this.user.token !== '' && this.user.token !== null;
+       // return this.user.token !== '' && this.user.token !== null;
+        return localStorage.getItem("token")!== null && localStorage.getItem("token")!==''
     }
 
     login = (accountData: {login: string, password: string}) => {
         this.isLoading = true;
         this.isError = false;
-        axios.post(urlLogin, accountData)
+        axios.post("login", accountData)
             .then((res) => {
                 this.isLoading = false;
-                this.user.token = res.data.token;
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("user", JSON.stringify(res.data))
             })
             .catch((err) => {
                 this.isLoading = false;
@@ -78,9 +76,10 @@ export default class AuthStore {
 
     signup = (accountData: {phone_number: string, password: string}) => {
         this.isError = false;
-        axios.post(urlSignup, accountData)
+        axios.post("account", accountData)
             .then((res) => {
-                this.user.token = res.data.token;
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("user", JSON.stringify(res.data))
             })
             .catch((err) => {
                 this.isError = true;
@@ -90,7 +89,8 @@ export default class AuthStore {
 
     logout = () => {
         console.log('logout');
-        this.user.token = '';
+        //this.user.token = '';
+        localStorage.removeItem("token")
         this.isError = false;
     };
 
@@ -102,9 +102,9 @@ export default class AuthStore {
         this.phone = '';
     }
 
-    getUserToken = () => {
-        return this.user.token;
-    }
+    // getUserToken = () => {
+    //     return this.user.token;
+    // }
 
     getUserInfo = () => {
         return this.user;
