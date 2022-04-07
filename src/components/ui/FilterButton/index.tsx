@@ -6,21 +6,19 @@ import styles from './index.module.scss'
 
 const cx = classNames.bind(styles);
 
-export const Button = (props: IButton) => {
-    const { id, title, onClick, image, color, children, type, textMini = false} = props;
-
+export const FilterButton = (props: IButton) => {
+    const { id, title, onClick, type, isActive} = props;
 
     return (
         <button
             onClick={onClick}
             className={cx({
                 button: true,
-                btnTextMini: textMini,
-            },props.color ? "btnGreen" : "btnGray")}
+                active: isActive
+            })}
             id={id}
             type={type}
         >
-            <img src={image}/>
             {title}
         </button>
     )
