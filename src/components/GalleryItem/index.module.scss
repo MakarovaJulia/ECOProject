@@ -1,0 +1,43 @@
+.galleryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 25px;
+}
+
+
+.item1 {
+  background-color: #B3EDC8;
+}
+
+.item2 {
+  background-color: #FFE48F;
+}
+
+.item3 {
+  background-color: #BFF0DE;
+}
+
+.content {
+  margin-left: 64px;
+}
+
+.photo {
+  height: 33vh;
+  max-height: 320px;
+  border-radius: 25px;
+}
+
+.title {
+  font-weight: 700;
+  line-height: 56px;
+  font-size: 48px;
+  color: #000B26;
+  margin: 0;
+}
+
+.paragraph {
+  line-height: 24px;
+  font-size: 16px;
+  color: #000B26CC;
+}

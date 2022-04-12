@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
 
+
 body{
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -58,6 +59,16 @@ body{
   align-items: center;
   padding-left: 8px;
   padding-right: 8px;
+}
+
+@media screen and (max-width: 900px){
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 h5{

@@ -5,3 +5,11 @@
   align-items: center;
   justify-content: center;
 }
+
+
+@media screen and (max-width: 900px){
+  .container{
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
