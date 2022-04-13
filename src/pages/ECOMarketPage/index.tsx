@@ -11,6 +11,7 @@ import {FilterButton} from "../../components/ui/FilterButton";
 import {Checkbox} from "../../components/ui/Checkbox";
 import {useState} from "react";
 import {CheckboxGroup} from "../../components/ui/CheckboxGroup";
+import {Sort} from "../../components/Market/Sort";
 
 interface Item {
     name: string;
@@ -36,17 +37,11 @@ const allBrands: Item[] = [
     {name: "REBOOK", checked: false}
 ]
 
-const allSortings: Item[] = [
-    { name: "По популярности", checked: false},
-    { name: "По цене", checked: false},
-    { name: "По новизне", checked: false},
-]
 
 export const ECOMarketPage = observer(() => {
 
     const [allProductsCategories, setAllProductsCategories] = useState(false);
     const [allProductsBrand, setAllProductsBrand] = useState(false);
-    const [sortings, setSorting] = useState(allSortings)
     const [genders, setGenders] = useState(allGenders)
     const [categories, setCategories] = useState(allCategories)
     const [brands, setBrands] = useState(allBrands);
@@ -55,40 +50,6 @@ export const ECOMarketPage = observer(() => {
 
     const dropFilters = ()=> {
     }
-
-
-    const sortByPrice = (index: number)=> {
-        if (index === 1) {
-            filteredData.sort((a, b) => {
-                return -(a.price - b.price)
-            })
-        }
-    }
-
-    const sortByRating = (index: number)=> {
-        if (index === 0) {
-            filteredData.sort((a, b) => {
-                return -(a.rating - b.rating)
-            })
-        }
-    }
-
-    const sortByDate = (index: number)=> {
-        if (index === 2) {
-            filteredData.sort((a, b) => {
-                return -(new Date(a.date).valueOf() - new Date(b.date).valueOf())
-            })
-        }
-    }
-
-    const handleClickSort = ( index: number ) => {
-        setSorting(sortings.map((sorting: Item, currentIndex: number) => currentIndex === index ?
-            {...sorting, checked: true}
-            : {...sorting, checked: false}))
-        sortByPrice(index)
-        sortByRating(index)
-        sortByDate(index)
-        }
 
     const updateCheckStatus = (index: number, setItems: any, items: Item[]) => {
         setItems(
@@ -135,18 +96,7 @@ export const ECOMarketPage = observer(() => {
                     <div className={marketStyles.filterHeaderWrapper}>
                         <h1>Эко маркет</h1>
                         <div className={marketStyles.filterBtnWrapper}>
-                            { sortings.map((sorting, index) => (
-                                <FilterButton
-                                    id={marketStyles.filterBtn}
-                                    title={ sorting.name }
-                                    type={"button"}
-                                    isActive={ sorting.checked }
-                                    onClick={() => {
-                                        handleClickSort(index)
-                                        console.log( sorting.checked )
-                                    }}/>
-                                ))
-                            }
+                            <Sort />
                         </div>
                     </div>
                     <div className={marketStyles.marketContainer}>
@@ -213,7 +163,7 @@ export const ECOMarketPage = observer(() => {
                             </div>
                             <Button id={marketStyles.filterDropBtn} color={false} title={"Сбросить фильтры"} onClick={dropFilters}/>
                         </div>
-                        <MarketGoods marketItems={filteredData} balance=''/>
+                        <MarketGoods balance=''/>
                     </div>
                 </div>
             </main>
