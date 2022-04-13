@@ -5,6 +5,16 @@
   border-radius: 25px;
 }
 
+@media screen and (max-width: 900px){
+  .galleryItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+  }
+}
+
 
 .item1 {
   background-color: #B3EDC8;
@@ -22,6 +32,14 @@
   margin-left: 64px;
 }
 
+
+@media screen and (max-width: 900px){
+  .content {
+    margin-left: 0;
+  }
+}
+
+
 .photo {
   height: 33vh;
   max-height: 320px;
@@ -34,6 +52,16 @@
   font-size: 48px;
   color: #000B26;
   margin: 0;
+}
+
+@media screen and (max-width: 900px){
+  .title {
+    font-weight: 700;
+    line-height: 56px;
+    font-size: 1.5em;
+    color: #000B26;
+    margin: 0;
+  }
 }
 
 .paragraph {
