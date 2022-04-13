@@ -15,6 +15,7 @@
     "classnames": "^2.3.1",
     "swiper": "^8.0.6",
     "formik": "^2.2.9",
+    "leaflet": "^1.7.1",
     "mobx": "^6.3.3",
     "mobx-react": "^6.3.0",
     "mobx-react-lite": "^3.2.2",
@@ -23,6 +24,7 @@
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
     "react-icons": "^4.3.1",
+    "react-leaflet": "^3.2.5",
     "react-router": "6.2.1",
     "react-router-dom": "6.2.1",
     "react-scripts": "5.0.0",
@@ -54,5 +56,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-leaflet": "^2.8.2"
   }
 }

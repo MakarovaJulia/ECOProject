@@ -1,0 +1,11 @@
+.map_cards_list{
+  position: relative;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+  gap: 16px;
+}
