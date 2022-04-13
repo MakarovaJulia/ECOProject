@@ -25,8 +25,8 @@ export const Navigation = observer((props: any) =>{
     }
 
     const check = () =>{
-        let res = localStorage.getItem("token")!== null && localStorage.getItem("token")!==''
         console.log(localStorage.getItem("token"))
+        console.log(localStorage.getItem("user"))
     }
 
     check()
@@ -54,19 +54,7 @@ export const Navigation = observer((props: any) =>{
                         </NavLink>
                     </div>
                     <div className={styles.header_wrapper}>
-                        { !isAuthorized ?
-                            <>
-                                <div className={styles.header_right}>
-                                    <img className={styles.header_icon} src={place} alt="place"/>
-                                    Город
-                                </div>
-                                <div className={styles.header_right}>
-                                    <button className={styles.header_modal_btn} onClick={openModal}>
-                                        <img className={styles.header_icon} src={enter} alt="enter"/>
-                                        Войти
-                                    </button>
-                                </div>
-                            </> :
+                        {localStorage.getItem("user") ?
                             <>
                                 <div className={styles.header_right}>
                                     <img className={styles.header_icon} src={place} alt="place"/>
@@ -82,6 +70,18 @@ export const Navigation = observer((props: any) =>{
                                         <div className={styles.no_user_photo}/>}
                                         {user.username}
                                     </div>
+                                </div>
+                            </>:
+                            <>
+                                <div className={styles.header_right}>
+                                    <img className={styles.header_icon} src={place} alt="place"/>
+                                    Город
+                                </div>
+                                <div className={styles.header_right}>
+                                    <button className={styles.header_modal_btn} onClick={openModal}>
+                                        <img className={styles.header_icon} src={enter} alt="enter"/>
+                                        Войти
+                                    </button>
                                 </div>
                             </>
                         }

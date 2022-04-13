@@ -1,3 +1,7 @@
+:root{
+  --index: calc(1vw + 1vh);
+}
+
 .galleryItem {
   display: flex;
   justify-content: space-between;
@@ -12,6 +16,9 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 0;
+    height: 400px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
@@ -68,4 +75,16 @@
   line-height: 24px;
   font-size: 16px;
   color: #000B26CC;
+}
+
+@media screen and (max-width: 900px){
+  .btn_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #gallery_item_btn{
+    width: calc(var(--index)* 30);
+  }
 }

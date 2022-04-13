@@ -4,24 +4,25 @@ import {useNavigate} from "react-router";
 import {AuthModal} from "../../components/Modals/AuthModal";
 import styles from './index.module.scss'
 import logo from "../../asserts/logo.svg";
-import {NavLink, Outlet} from "react-router-dom";
 import place from "../../asserts/place.svg";
 import enter from "../../asserts/enter.svg";
 import currency from "../../asserts/currency.svg";
+import burger from "../../asserts/burger.svg";
 import React from "react";
+import {Button} from "../../components/ui/Button";
+import {HeaderModal} from "../../components/Modals/HeaderModal";
 
 export const MobileNavigation = observer((props: any) =>{
     const { children } = props;
     const {modalStore: {setCurrentModal, clearCurrentModal}, authStore: {isAuthorized, user}} = useStores();
-    let navigate = useNavigate()
 
     const openModal = () => {
         clearCurrentModal()
         setCurrentModal(AuthModal)
     }
 
-    const goToProfile = () => {
-        navigate('/profile');
+    const openHeaderModal = () => {
+        setCurrentModal(HeaderModal)
     }
 
     const check = () =>{
@@ -36,22 +37,6 @@ export const MobileNavigation = observer((props: any) =>{
         <>
             <div className={styles.header_wrapper}>
                 <img className={styles.logo} src={logo} alt="ECO Logo"/>
-                <NavLink to='/'
-                         className={(navData) => navData.isActive ? styles.header_link_active : styles.header_link}>
-                    Главная
-                </NavLink>
-                <NavLink to='/collect_point'
-                         className={(navData) => navData.isActive ? styles.header_link_active : styles.header_link}>
-                    Пункты сбора
-                </NavLink>
-                <NavLink to='/eco_market'
-                         className={(navData) => navData.isActive ? styles.header_link_active : styles.header_link}>
-                    Эко маркет
-                </NavLink>
-                <NavLink to='/'
-                         className={(navData) => navData.isActive ? styles.header_link_active : styles.header_link}>
-                    О сервисе
-                </NavLink>
             </div>
             <div className={styles.header_wrapper}>
                 { !isAuthorized ?
@@ -66,6 +51,7 @@ export const MobileNavigation = observer((props: any) =>{
                                 Войти
                             </button>
                         </div>
+                        <Button color={false} id={styles.burger_btn} image={burger} onClick={openHeaderModal}/>
                     </> :
                     <>
                         <div className={styles.header_right}>
@@ -80,9 +66,9 @@ export const MobileNavigation = observer((props: any) =>{
                             <div className={styles.user}>
                                 {<img className={styles.user_photo} src={user.photo_url} alt="photo"/> &&
                                 <div className={styles.no_user_photo}/>}
-                                {user.username}
                             </div>
                         </div>
+                        <Button color={false} id={styles.burger_btn} image={burger} onClick={openHeaderModal}/>
                     </>
                 }
             </div>

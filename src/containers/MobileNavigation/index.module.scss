@@ -5,30 +5,13 @@
   margin-left: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .logo{
   width: 94px;
   margin-right: 24px;
-}
-
-.header_link{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  color: #000B26;
-  opacity: 64%;
-  text-decoration: none;
-  margin-right: 24px;
-}
-
-.header_link_active{
-  @extend .header_link;
-  opacity: 100%;
-  border-bottom: 3px solid #07C88E;
 }
 
 .header_right{
@@ -60,5 +43,11 @@
   height: 40px;
   border-radius: 50px;
   background-color: #07C88E;
+}
+
+#burger_btn{
+  background-color: #FFFFFF;
+  width: 50px;
+  height: 50px;
 }
 

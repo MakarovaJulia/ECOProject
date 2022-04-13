@@ -6,3 +6,10 @@
   box-sizing: border-box;
   border-radius: 16px;
 }
+
+@media screen and (max-width: 900px){
+  .container{
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+}
