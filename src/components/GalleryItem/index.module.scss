@@ -43,6 +43,7 @@
 @media screen and (max-width: 900px){
   .content {
     margin-left: 0;
+    width: 100%;
   }
 }
 
@@ -51,6 +52,15 @@
   height: 33vh;
   max-height: 320px;
   border-radius: 25px;
+}
+
+@media screen and (max-width: 900px){
+  .photo {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border-radius: 0;
+  }
 }
 
 .title {
