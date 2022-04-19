@@ -9,15 +9,37 @@
   align-items: center;
 }
 
+
+@media screen and (max-width: 900px){
+  .header_wrapper{
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+}
+
+
 .logo{
   width: 94px;
   margin-right: 24px;
+}
+
+@media screen and (max-width: 900px){
+  .logo{
+    width: 15vw;
+    margin-right: 2vw;
+  }
 }
 
 .header_right{
   display: flex;
   flex-direction: row;
   margin-right: 24px;
+}
+
+@media screen and (max-width: 900px){
+  .header_right{
+    margin-right: 1vw;
+  }
 }
 
 .header_modal_btn{
