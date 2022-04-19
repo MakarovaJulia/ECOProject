@@ -58,3 +58,9 @@
     margin-top: 8px;
   }
 }
+
+@media screen and (max-width: 415px) {
+  .promoCodeCard {
+    min-width: 100%;
+  }
+}

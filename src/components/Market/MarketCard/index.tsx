@@ -17,13 +17,11 @@ export const MarketCard = (props: IMarketCard) => {
         <div  className={styles.itemCard}>
             <div className={styles.cardTop}>
                 <Link isMarketItemBrand>{brand}</Link>
-                <Link>
-                    <img
-                        className={styles.photo}
-                        src={require('../../../mocks/' + photo)}
-                        alt={title + ', фотография'}
-                    />
-                </Link>
+                <img
+                    className={styles.photo}
+                    src={require('../../../mocks/' + photo)}
+                    alt={title + ', фотография'}
+                />
             </div>
             <div className={styles.linksBlock}>
                 <Link isMarketItemTitle>{title}</Link>

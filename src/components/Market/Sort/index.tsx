@@ -8,7 +8,7 @@ export const Sort = observer(() => {
     const {marketStore: {getSortings, handleClickSort}} = useStores();
 
     return (
-            <>
+            <div className={styles.filterBtnWrapper}>
                 { getSortings.map((sorting, index) => (
                     <FilterButton
                         id={styles.filterBtn}
@@ -20,6 +20,6 @@ export const Sort = observer(() => {
                         }}
                     />
                 ))}
-            </>
+            </div>
     )
 })

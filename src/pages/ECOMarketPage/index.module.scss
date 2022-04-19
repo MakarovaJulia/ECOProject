@@ -30,3 +30,27 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 900px) {
+  .mainContainer {
+    max-width: 100%;
+  }
+
+  .filterHeaderWrapper {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      color: #000B26CC;
+    }
+  }
+
+  .contentAligner {
+    padding: 0 16px;
+  }
+
+  .marketContainer {
+    margin-top: 32px;
+    justify-content: center;
+  }
+}

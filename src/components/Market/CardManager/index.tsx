@@ -2,6 +2,7 @@ import {useState} from "react";
 import {ICardManager} from "./index.interfaces";
 import {GetPromoCodeCard} from "../GetPromoCodeCard";
 import {MarketCard} from "../MarketCard";
+import styles from "./index.module.scss";
 
 
 export const CardManager = (props: ICardManager) => {
@@ -22,19 +23,23 @@ export const CardManager = (props: ICardManager) => {
         <li key={key}
             onMouseEnter={() => setBackIsShown(true)}
             onMouseLeave={() => setBackIsShown(false)}
-        >{
-            backIsShown?
-                <GetPromoCodeCard balance={balance} />
-                :
-                <MarketCard
-                    brand={brand}
-                    photo={photo}
-                    title={title}
-                    category={category}
-                    price={price}
-                    key={key}
-                />
-        }
+        >
+            <button className={styles.cardButton} onClick={() => setBackIsShown(!backIsShown)}>
+                {
+                    backIsShown?
+                        <GetPromoCodeCard balance={balance} />
+                        :
+                        <MarketCard
+                            brand={brand}
+                            photo={photo}
+                            title={title}
+                            category={category}
+                            price={price}
+                            key={key}
+                        />
+                }
+            </button>
+
         </li>
     )
 }

@@ -2,7 +2,7 @@ import {observer} from "mobx-react";
 import styles from "./index.module.scss";
 import currency_img from "../../../asserts/currency.svg";
 import {Button} from "../../ui/Button";
-import {FC} from "react";
+import {FC, useState} from "react";
 import {IGetPromoCodeCard} from './index.interfaces';
 import {useStores} from "../../utils/use-stores-hook";
 import {MarketModal} from "../../Modals/MarketModal";

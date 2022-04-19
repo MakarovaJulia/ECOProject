@@ -7,32 +7,51 @@ import {NavLink} from "react-router-dom";
 import {MarketGoods} from "../../components/Market/MarketGoods";
 import {Sort} from "../../components/Market/Sort";
 import {Filters} from "../../components/Market/Filters";
+import {Button} from "../../components/ui/Button";
+import {useStores} from "../../components/utils/use-stores-hook";
+import {FiltersSortModal} from "../../components/Modals/FiltersSortModal";
 
 
 export const ECOMarketPage = observer(() => {
 
+    const {modalStore: {setCurrentModal, clearCurrentModal}} = useStores();
+
+    const screenWidthForAdaptive = 900;
+
+    const openFiltersSortModal = () => {
+        clearCurrentModal();
+        setCurrentModal(FiltersSortModal);
+    }
+
+
     return (
         <div className={styles.main}>
-            <HeaderContainer>
-                <img className={styles.logo} src={logo} alt="ECO Logo"/>
-                <NavLink to='/'>Главная</NavLink>
-                <NavLink to='/collect_point'>Пункты сбора</NavLink>
-                <NavLink to='/eco_market'>Эко маркет</NavLink>
-                <NavLink to='/'>О сервисе</NavLink>
-                <div>Город</div>
-                <div>Войти</div>
-            </HeaderContainer>
+            {/*<HeaderContainer>*/}
+            {/*    <img className={styles.logo} src={logo} alt="ECO Logo"/>*/}
+            {/*    <NavLink to='/'>Главная</NavLink>*/}
+            {/*    <NavLink to='/collect_point'>Пункты сбора</NavLink>*/}
+            {/*    <NavLink to='/eco_market'>Эко маркет</NavLink>*/}
+            {/*    <NavLink to='/'>О сервисе</NavLink>*/}
+            {/*    <div>Город</div>*/}
+            {/*    <div>Войти</div>*/}
+            {/*</HeaderContainer>*/}
 
             <main className={marketStyles.contentAligner}>
                 <div className={marketStyles.mainContainer}>
                     <div className={marketStyles.filterHeaderWrapper}>
+                        {/*<div className={styles.test}>*/}
+                        {/*    <Sort />*/}
+                        {/*</div>*/}
+
                         <h1>Эко маркет</h1>
-                        <div className={marketStyles.filterBtnWrapper}>
-                            <Sort />
-                        </div>
+                        {window.screen.width < screenWidthForAdaptive
+                            ? <Button color={false} title='Фильтры' onClick={openFiltersSortModal}/>
+                            : <Sort />
+                        }
                     </div>
                     <div className={marketStyles.marketContainer}>
-                        <Filters />
+                        { window.screen.width >= screenWidthForAdaptive && <Filters /> }
+
                         <MarketGoods balance=''/>
                     </div>
                 </div>
