@@ -26,23 +26,19 @@ export const ECOMarketPage = observer(() => {
 
     return (
         <div className={styles.main}>
-            {/*<HeaderContainer>*/}
-            {/*    <img className={styles.logo} src={logo} alt="ECO Logo"/>*/}
-            {/*    <NavLink to='/'>Главная</NavLink>*/}
-            {/*    <NavLink to='/collect_point'>Пункты сбора</NavLink>*/}
-            {/*    <NavLink to='/eco_market'>Эко маркет</NavLink>*/}
-            {/*    <NavLink to='/'>О сервисе</NavLink>*/}
-            {/*    <div>Город</div>*/}
-            {/*    <div>Войти</div>*/}
-            {/*</HeaderContainer>*/}
+            <HeaderContainer>
+                <img className={styles.logo} src={logo} alt="ECO Logo"/>
+                <NavLink to='/'>Главная</NavLink>
+                <NavLink to='/collect_point'>Пункты сбора</NavLink>
+                <NavLink to='/eco_market'>Эко маркет</NavLink>
+                <NavLink to='/'>О сервисе</NavLink>
+                <div>Город</div>
+                <div>Войти</div>
+            </HeaderContainer>
 
             <main className={marketStyles.contentAligner}>
                 <div className={marketStyles.mainContainer}>
                     <div className={marketStyles.filterHeaderWrapper}>
-                        {/*<div className={styles.test}>*/}
-                        {/*    <Sort />*/}
-                        {/*</div>*/}
-
                         <h1>Эко маркет</h1>
                         {window.screen.width < screenWidthForAdaptive
                             ? <Button color={false} title='Фильтры' onClick={openFiltersSortModal}/>
