@@ -36,9 +36,8 @@
     align-items: end;
   }
   .modal_window {
-    height: 80%;
-    //border-radius: 24px 24px 0 0;
-    border-radius: 24px;
+    height: 95vh;
+    border-radius: 24px 24px 0 0;
   }
 }
 
@@ -85,6 +84,16 @@
 @media screen and (max-width: 900px) {
   .modal_close_btn {
     width: 32px;
-    border-top: 3px solid black;
+    background-image: url("../../../asserts/dash.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .modal_window {
+    padding: 0;
+  }
+
+  .modal_header {
+    justify-content: center;
   }
 }

@@ -10,7 +10,6 @@ interface Props {
     onClose: () => void;
     hasBtnForPartners: boolean;
     hideCloseBtn?: boolean;
-    isBottomSheet?: boolean;
 }
 
 export const    Modal: FC<Props> = (
@@ -20,7 +19,6 @@ export const    Modal: FC<Props> = (
         hasBtnForPartners,
         children,
         hideCloseBtn=false,
-        isBottomSheet=false,
     }) => {
     const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores()
     const modalRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -44,7 +42,6 @@ export const    Modal: FC<Props> = (
                     {!hideCloseBtn &&
                         <button onClick={onClose} className={styles.modal_close_btn}>
                             {window.screen.width > 900 && <IoCloseOutline className={styles.modal_close_icon}/>}
-                            Hello
                         </button>
                     }
                 </div>

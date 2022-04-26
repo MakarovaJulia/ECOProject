@@ -6,21 +6,30 @@ import styles from "./index.module.scss";
 
 export const Filters = observer( () => {
 
-    const {marketStore: {
-        getGenders,
-        getCategories,
-        getBrands,
-        setGenders,
-        setCategories,
-        setBrands,
-        getAllProductsCategories,
-        getAllProductsBrand,
-        setAllProductsCategories,
-        setAllProductsBrand,
-        updateCheckStatus,
-        updateCheckStatusAll,
-        dropFilters,
-    }} = useStores();
+    const {
+        marketStore:
+            {
+                getGenders,
+                getCategories,
+                getBrands,
+                setGenders,
+                setCategories,
+                setBrands,
+                getAllProductsCategories,
+                getAllProductsBrand,
+                setAllProductsCategories,
+                setAllProductsBrand,
+                updateCheckStatus,
+                updateCheckStatusAll,
+                dropFilters,
+            },
+        modalStore:
+            {
+                clearCurrentModal,
+            }
+    } = useStores();
+
+    const screenWidthForAdaptive = 900;
 
     return (
         <div className={styles.filtersWrapper}>
@@ -90,6 +99,13 @@ export const Filters = observer( () => {
                 title="Сбросить фильтры"
                 onClick={dropFilters}
             />
+            {window.screen.width <= screenWidthForAdaptive &&
+                <Button
+                    title='Применить фильтры'
+                    onClick={clearCurrentModal}
+                    color
+                />
+            }
         </div>
     )
 })
