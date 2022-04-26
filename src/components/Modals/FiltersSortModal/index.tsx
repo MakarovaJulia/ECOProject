@@ -9,7 +9,12 @@ export const FiltersSortModal = observer(() => {
     const {modalStore: {clearCurrentModal}} = useStores();
 
     return (
-        <Modal title='' onClose={clearCurrentModal} hasBtnForPartners={false}>
+        <Modal
+            title=''
+            onClose={clearCurrentModal}
+            hasBtnForPartners={false}
+            isBottomSheet
+        >
             <div className={styles.sort}>
                 <Sort />
             </div>
