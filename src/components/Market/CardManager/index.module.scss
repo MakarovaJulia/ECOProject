@@ -1,0 +1,12 @@
+.cardButton {
+  background: transparent;
+  border: none;
+  text-align: start;
+  padding: 0;
+}
+
+@media screen and (max-width: 415px) {
+  .cardButton {
+    min-width: 100%;
+  }
+}

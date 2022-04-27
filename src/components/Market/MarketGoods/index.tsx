@@ -1,11 +1,15 @@
 import styles from './index.module.scss';
 import {IMarketGoods, IMarketItem} from "./index.interfaces";
 import {CardManager} from "../CardManager";
+import {observer} from "mobx-react";
+import {useStores} from "../../utils/use-stores-hook";
 
 
-export const MarketGoods = (props: IMarketGoods) => {
+export const MarketGoods = observer((props: IMarketGoods) => {
 
-    const {marketItems, balance} = props;
+    const {marketStore: {getGoods}} = useStores();
+
+    const {balance} = props;
 
     const getCards = (marketItems: IMarketItem[]) => {
         const cards = [];
@@ -23,11 +27,11 @@ export const MarketGoods = (props: IMarketGoods) => {
             )
         }
         return cards;
-
     }
+
     return (
         <ul className={styles.goodsList}>
-            {getCards(marketItems)}
+            {getCards(getGoods)}
         </ul>
     )
-}
+})

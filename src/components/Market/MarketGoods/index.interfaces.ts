@@ -8,6 +8,5 @@ export interface IMarketItem {
 }
 
 export interface IMarketGoods {
-    marketItems: IMarketItem[];
     balance: string | number;
 }

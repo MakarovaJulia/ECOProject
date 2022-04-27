@@ -31,6 +31,16 @@
   }
 }
 
+@media screen and (max-width: 415px) {
+  .overlay {
+    align-items: end;
+  }
+  .modal_window {
+    height: 95vh;
+    border-radius: 24px 24px 0 0;
+  }
+}
+
 .modal_header{
   width: 100%;
   display: flex;
@@ -69,4 +79,21 @@
 .modal_close_icon{
   width: 30px;
   height: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .modal_close_btn {
+    width: 32px;
+    background-image: url("../../../asserts/dash.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .modal_window {
+    padding: 0;
+  }
+
+  .modal_header {
+    justify-content: center;
+  }
 }
