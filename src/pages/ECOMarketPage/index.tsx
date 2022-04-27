@@ -10,6 +10,8 @@ import {Filters} from "../../components/Market/Filters";
 import {Button} from "../../components/ui/Button";
 import {useStores} from "../../components/utils/use-stores-hook";
 import {FiltersSortModal} from "../../components/Modals/FiltersSortModal";
+import {LayoutContainer} from "../../containers/LayoutContainer";
+import {FooterContainer} from "../../containers/FooterContainer";
 
 
 export const ECOMarketPage = observer(() => {
@@ -35,23 +37,25 @@ export const ECOMarketPage = observer(() => {
                 <div>Город</div>
                 <div>Войти</div>
             </HeaderContainer>
+            <LayoutContainer>
+                <main className={marketStyles.contentAligner}>
+                    <div className={marketStyles.mainContainer}>
+                        <div className={marketStyles.filterHeaderWrapper}>
+                            <h1>Эко маркет</h1>
+                            {window.screen.width < screenWidthForAdaptive
+                                ? <Button color={false} title='Фильтры' onClick={openFiltersSortModal}/>
+                                : <Sort />
+                            }
+                        </div>
+                        <div className={marketStyles.marketContainer}>
+                            { window.screen.width >= screenWidthForAdaptive && <Filters /> }
 
-            <main className={marketStyles.contentAligner}>
-                <div className={marketStyles.mainContainer}>
-                    <div className={marketStyles.filterHeaderWrapper}>
-                        <h1>Эко маркет</h1>
-                        {window.screen.width < screenWidthForAdaptive
-                            ? <Button color={false} title='Фильтры' onClick={openFiltersSortModal}/>
-                            : <Sort />
-                        }
+                            <MarketGoods balance=''/>
+                        </div>
                     </div>
-                    <div className={marketStyles.marketContainer}>
-                        { window.screen.width >= screenWidthForAdaptive && <Filters /> }
-
-                        <MarketGoods balance=''/>
-                    </div>
-                </div>
-            </main>
+                </main>
+            </LayoutContainer>
+            <FooterContainer></FooterContainer>
         </div>
     )
 });
