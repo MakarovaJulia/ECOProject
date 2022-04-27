@@ -36,8 +36,9 @@ export const GalleryItem: FC<IGalleryItem>= ({
             <div className={styles.content}>
                 <h1 className={styles.title}>{title}</h1>
                 <p className={styles.paragraph}>{paragraph}</p>
-                <Button onClick={onClick} color={true} title={buttonTitle}>
-                </Button>
+                <div className={styles.btn_wrapper}>
+                    <Button onClick={onClick} color={true} title={buttonTitle} id={styles.gallery_item_btn}/>
+                </div>
             </div>
             <img src={photo} className={styles.photo} alt='photo' />
         </div>

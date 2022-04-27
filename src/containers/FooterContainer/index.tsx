@@ -12,11 +12,11 @@ export const FooterContainer = (props: any) =>{
         <>
             <div className={styles.container}>
                 <div className={styles.footer_wrapper}>
-                    <div className={styles.footer_text}>
+                    <div className={styles.footer_info}>
                         <img className={styles.footer_icon} src={mail} alt="mail"/>
                         info@ecorus.ru
                     </div>
-                    <div className={styles.footer_text}>
+                    <div className={styles.footer_info}>
                         <img className={styles.footer_icon} src={phone} alt="phone"/>
                         +7 (800) 880-88-88
                     </div>
